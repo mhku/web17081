@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+    </style>
+</head>
+<body>
+   <h3>two.js</h3>
+   <div id="box"></div>
+   <script src="js/two.js"></script>
+   <script>
+       //1:创建对象
+       var two = new Two({
+         width:800,
+         height:400,
+         types:Two.Types.svg
+       }).appendTo(box);
+       //2:在左侧绘制一个圆形
+       var c = two.makeCircle(200,200,100);
+       //3:在右侧绘制矩形
+       var r = two.makeRectangle(600,200,100,80);
+       //4:把绘图对象更新dom树
+       two.update();
+
+   </script>
+</body>
+</html>
+
+
+

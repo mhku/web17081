@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var MyComponent=React.createClass({
+    handleClick:function(){
+        console.log(this.refs.myInput.value);
+        console.log(this.refs.myTest);
+    },
+    render:function(){
+        return <div>
+            <input type="text" ref="myInput"/>
+            <button onClick={this.handleClick} >点击</button>
+            <TestComponent ref="myTest"/>
+        </div>
+    }
+  })
+  //ref也可以用在组件中
+  var TestComponent=React.createClass({
+    count:100,
+    render:function(){
+        return <div>
+            <p>这是一个子组件</p>
+        </div>
+    }
+  })
+  ReactDOM.render(
+    <MyComponent/>,
+    document.getElementById('example')
+  );
+</script>
+</body>
+</html>

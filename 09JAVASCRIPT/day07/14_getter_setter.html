@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    class Emp{
+        constructor(age){
+            Object.defineProperties(this,{
+                _age:{writable:true}
+            });
+            this.age=_age;
+            Object.seal(this);
+        }
+        static findEmpById(){
+            console.log("按照id查找员工")
+        }
+        get age(){return this._age;}
+        set age(val){
+            if(val>=18&&val<=65)
+                this._age=val;
+            else throw new RangeError("年龄必须介于18到65之间");
+        }
+    }
+    var eric=new Emp(-2);
+    console.log(eric);
+</script>
+</body>
+</html>

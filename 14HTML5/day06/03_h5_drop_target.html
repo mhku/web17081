@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+    </style>
+</head>
+<body>
+   <h4>拖动目标对象可能触发事件4</h4>
+   <img src="img/1.png" id="trash" />
+   <hr>
+   <img src="img/p3.png" id="p3" />
+   <script>
+    trash.ondragenter = function(){//拖动进入
+      console.log("drag enter");
+    }
+    trash.ondragover = function(e){//拖动悬停
+      e.preventDefault();          //阻止事件默认行为
+      console.log("drag over");
+    }
+    trash.ondragleave = function(){//拖动离开
+      console.log("drag leave")
+    }
+    trash.ondrop = function(){//拖动释放
+      console.log("drop");
+    }
+
+
+
+
+
+   </script>
+</body>
+</html>

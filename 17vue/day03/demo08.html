@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="example">
+    <father></father>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var bus=new Vue();
+    Vue.component("father",{
+        template:`
+            <div>
+                <xiong-da></xiong-da>
+                <hr/>
+                <xiong-er></xiong-er>
+            </div>
+        `
+    })
+    Vue.component("xiong-da",{
+        methods:{
+            sendTOXiongEr:function(){
+                bus.$emit("toXiongEr","oivdf");
+            }
+        },
+        template:`
+            <div>
+                <h1>胸大</h1>
+                <button>通知熊二</button>
+            </div>
+        `
+    })
+    Vue.component("xiong-er",{
+        created:function(){
+            bus.$on("toXiongEr",function(msg){
+                console.log("熊二收到数据"+msg);
+            })
+        },
+        template:`
+            <div>
+                <h1>熊二</h1>
+            </div>
+        `
+    })
+    new Vue({
+        el: '#example',
+        data: {
+            msg: 'Hello VueJS'
+        }
+    })
+</script>
+
+</body>
+</html>

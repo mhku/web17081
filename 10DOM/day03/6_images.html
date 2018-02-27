@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #slider{
+      width:200px; height:150px;
+      position:relative;
+      border:1px solid #555;
+    }
+    #slider>img{
+      position:absolute; top:0; left:0;
+      opacity:0;
+      transition:all .5s linear;
+    }
+    #slider>img.show{  
+		opacity:1;  z-index:10;
+	}
+  </style>
+</head>
+<body>
+<div id="slider">
+  <img src="images/1.jpg" class="show" alt="花团锦簇"/>
+  <img src="images/2.jpg" alt="大漠戈壁";/>
+  <img src="images/3.jpg" alt="万紫千红"/>
+  <img src="images/4.jpg" alt="海洋生物"/>
+</div>
+<script>
+	var imgs=
+		document.querySelectorAll("#slider>img");
+	for(var img of imgs){
+		img.onclick=e=>alert(e.target.alt);
+	}
+  //定义任务函数
+	function task(){
+		//查找id为slider下的class为show的元素show
+		var show=
+			document.querySelector("#slider>.show");
+		show.className="";//清除show的class
+		if(show.nextElementSibling)
+			//设置show的下一个兄弟的class为show
+			show.nextElementSibling.className="show";
+		else
+			show.parentNode
+			    .firstElementChild
+					.className="show"
+	}
+	var timer=setInterval(task,3000);
+	//查找id为slider的div
+	var div=document.getElementById("slider");
+	//为div绑定鼠标进入onmouseover事件
+	div.onmouseover=()=>{
+		//停止定时器,并清空timer
+		clearInterval(timer); timer=null;
+	}
+	//为div绑定鼠标移除onmouseout事件
+	div.onmouseout=()=>{
+		timer=setInterval(task,3000);//启动定时器
+	}
+		
+</script>
+</body>
+</html>

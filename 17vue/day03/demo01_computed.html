@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+
+    <ul>
+        <li v-for="tmp in myList">
+            <p>{{tmp}}</p>
+            <!--通过methods调用方法-->
+            <p>{{getCount()}}</p>
+            <h3>{{getNowCount}}</h3>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    new Vue({
+      el:'#example',
+      mounted:function () {
+        console.log('Vue实例中的mounted被执行了');
+        setInterval(()=>{
+          this.num++;
+          this.myList.push(Math.random()*100)
+          //当num对4取模为0时候，向数组中插入一条随机的数据
+          if(this.num%4 == 0){
+            this.count++;
+          }
+        },1000);
+      },
+      data:{
+        count:0,
+        num:0,
+        myList:[]
+      },
+      methods:{
+        getCount:function () {
+          console.log('get count func is called');
+          return this.count;
+        }
+      },
+      computed:{
+        getNowCount:function () {
+          console.log('get now count computed is called');
+          return this.count;
+        }
+      }
+    })
+</script>
+
+</body>
+</html>

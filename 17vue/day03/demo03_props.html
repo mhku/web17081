@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <xiao-tou></xiao-tou>
+</div>
+
+<script>
+    Vue.component('xiao-tou',{
+      data:function () {
+        return {
+          uName:'大头儿子'
+        }
+      },
+      template:`
+      <div>
+        <h1>这是父组件</h1>
+        <hr/>
+        <da-tou :sonName='uName'></da-tou>
+        <da-tou sonName="大头儿子"></da-tou>
+      </div>
+      `
+    })
+
+    Vue.component('da-tou',{
+      props:['sonName'],
+      template:`
+        <div>
+          <h1>这是子组件</h1>
+          <p>{{this.sonName}}</p>
+        </div>
+      `
+    })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS'
+    }
+  })
+</script>
+
+</body>
+</html>

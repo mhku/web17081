@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1、分三次输入年(year)月(month)日(day)
+			var year = Number(prompt("Year:"));
+			var month = Number(prompt("Month:"));
+			var day = Number(prompt("Day:"));
+			//2、判断year是否为闰年，并将结果保存在 isRun中
+			var isRun=year%4==0&&year%100!=0||year%400==0;
+			//3、判断month到底是几月，将月份进行累加，将结果保存在 totalDays 中
+			var totalDays = 0;
+			if(month == 1){
+				totalDays = day;
+			}else if(month == 2){
+				totalDays = 31 + day;
+			}else if(month == 3){
+				totalDays = 31 + (isRun ? 29 : 28) + day;
+			}else if(month == 4){
+				totalDays = 31 + (isRun ? 29 : 28) + 31 + day;
+			}else if(month == 5){
+				totalDays = 31 + (isRun ? 29 : 28) + 31 + 30 + day;
+			}
+
+			console.log(year+"年"+month+"月"+day+"日是"+year+"年的第"+totalDays+"天");
+
+		</script>
+	</body>
+</html>

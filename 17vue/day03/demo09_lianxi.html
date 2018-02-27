@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="example">
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component("my-input",{
+        props:["uName"],
+        data:function(){
+          return{
+              userInput:""
+          }
+        },
+        methods:{
+            sendToChatRoom:function(){
+                this.$emit("addToListEvent",this.userInput);
+            }
+        }
+    })
+    Vue.component("chat-room",{
+        data:function(){
+            return{
+
+            }
+        },
+        methods:{
+            rcvMsg:function(msg){
+                console.log("子组件"+msg)
+            }
+        },
+        template:`
+            <div>
+                <ul>
+                    <li v-for="tmp in msgList">
+                        {{msg}}
+                    </li>
+                </ul>
+                <my-input @addToListEvent="rcvMsg"></my-input>
+            </div>
+        `
+    })
+    new Vue({
+        el:"#example",
+        msg:"hrmrlag"
+    })
+</script>
+</body>
+</html>

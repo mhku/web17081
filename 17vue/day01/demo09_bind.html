@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <p>{{msg}}</p>
+    <img src="img/1.jpg"
+         style="width:100px;height:100px" alt=""/>
+
+    <!-- v-bind:attr 等价于 :attr (相当于是支持一种简写方式)-->
+    <img :src="imgUrl"
+         style="width:100px;height:100px" alt=""/>
+    <a :href="linkUrl">跳转</a>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      imgUrl:'img/1.jpg',
+      linkUrl:'http://www.baidu.com'
+    }
+  })
+</script>
+
+</body>
+</html>

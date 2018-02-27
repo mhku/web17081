@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="setRequest()">发送AJAX请求</button>
+		<script src="common.js"></script>
+		<script>
+			function setRequest(){
+				//1、获取 xhr
+				var xhr = createXhr();
+				//2、创建请求
+				xhr.open("get","03-response.php",true);
+			}
+		</script>
+	</body>
+</html>

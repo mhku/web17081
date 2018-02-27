@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="common.js"></script>
+</head>
+<body>
+<button onclick="load()">显示数据</button>
+<table>
+    <thead>
+    <tr>
+        <th>123</th>
+        <th>243</th>
+        <th>554</th>
+        <th>344</th>
+    </tr>
+    </thead>
+    <tbody id="content"></tbody>
+</table>
+<script>
+    var infos=[
+            ["恩爱狗","泰国人","不辨是非闭包写"],
+            ["被爸爸","aregerfv","个上班方便"],
+            ["gergez","额会告诉","ae不认识字"]
+    ];
+    function load(){
+        var html="";
+        for(var i=0;i<infos.length;i++){
+            //将infos中的每个元素值赋值给book变量，book是一个数组
+            var book=infos[i];
+            html+="<tr>";
+            html+="<td>"+(i+1)+"</td>";
+            for(var j=0;j<book.length;j++){
+                html+="<td>"+(book[j])+"</td>"
+            }
+            html+="</tr>";
+        }
+        $("content").innerHTML=html;
+        console.log(html);
+    }
+</script>
+</body>
+</html>

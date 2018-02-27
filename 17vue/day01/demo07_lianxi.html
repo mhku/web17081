@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+
+    <h2 v-if="!isDataReady">正在加载数据</h2>
+
+    <ul>
+        <li v-for="tmp in myList">
+            {{tmp}}
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    var app = new Vue({
+      el:'#example',
+      data:{
+        isDataReady:false,
+        myList:[]
+      }
+    })
+
+
+    //2s之后，在处理函数中修改Vue实例中的数据
+    setTimeout(function(){
+        app.isDataReady = true;
+        //数组的基本操作：push/unshift/splice
+//        app.myList = [100,200,300];
+        var num1 = Math.floor(Math.random()*100)
+        app.myList.push(num1);
+        var num2 = Math.floor(Math.random()*100)
+        app.myList.push(num2);
+        var num3 = Math.floor(Math.random()*100)
+        app.myList.push(num3);
+    },2000);
+
+</script>
+
+</body>
+</html>

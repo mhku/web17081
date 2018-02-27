@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1、声明变量 r ，表示圆的半径
+			var r = 10;
+			//2、声明常量 PI ，表示圆周率 3.14
+			const PI = 3.14;
+			//3、计算圆的周长，并保存在变量 l 中
+			var l = 2 * PI * r;
+			//4、计算圆的面积，并保存在变量 s 中
+			var s = PI * r * r;
+			//将 l 保留2位小数，再保存回l中
+			l=l.toFixed(2);
+			//5、控制台中打印输出 l 和 s 的值
+			console.log("半径为"+r+"的圆的周长为:"+l);
+			console.log("半径为"+r+"的圆的面积为:"+s);
+		</script>
+	</body>
+</html>

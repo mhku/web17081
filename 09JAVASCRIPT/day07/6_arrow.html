@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn1">click me!</button>
+<script>
+    var arr=[12,3,123,1,23,2];
+    arr.sort((a,b)=>a-b);
+    console.log(arr);
+
+    var str="娲惧嚭鎵€鐨勫叕瀹夊共璀﹁礋璐ｇ淮鎶ゅ叕鍏卞畨鍏ㄧЗ搴�";
+    //PCS     GA  GJ            GGAQ
+    str=str.replace(
+            /娲惧嚭鎵€|鍏畨|骞茶|鍏叡瀹夊叏/g,
+        kw=>{
+           return kw=="娲惧嚭鎵€"?"PCS":
+                  kw=="鍏畨"?"GA":
+                  kw=="骞茶"?"GJ":
+                              "GGAQ";
+            }
+    );
+    console.log(str);
+
+    var odds=[1,3,5,3,1];
+    var evens=odds.map(elem=>elem*2);
+    console.log(odds,evens);
+
+    console.log(
+            arr.every((elem,i,arr)=>
+                 i<arr.length-1?elem<=arr[i+1]:"true";
+           ),//true
+            odds.every((elem,i,arr)=>
+                 i<arr.length-1?elem<=arr[i+1]:"true";
+            )//false
+    );
+
+    btn1.onclick=()=> alert("疼！ ");
+
+    (()=>{
+        var end=new Date();
+        console.log(end);
+    })()
+</script>
+
+</body>
+</html>

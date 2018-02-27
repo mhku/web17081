@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		(function(){
+			var network=function(){
+ 				var monitor=this;
+ 				var speedInterval=null;
+ 				var networkInterval=null;
+ 				var reNetworkInterval=null;
+ 				var time=5000;
+ 				var getConnectState=function(){
+  				return navigator.onLine?1:0;
+ 				};
+ 				var disconnect=function(){
+  				console.log("网速中断");
+				  window.clearInterval(reNetworkInterval);
+				  reNetworkInterval=null;
+				  endSpeed();
+				  endNetwork();
+ 					window.setTimeout(function(){
+   					reNetworkInterval=window.setInterval(function(){
+    					if(getConnectState()==1){
+     						window.clearInterval(reNetworkInterval);
+     						reNetworkInterval=null;
+					     	startSpeed();
+					     	startNetwork();
+    					}else{
+					     	window.clearInterval(reNetworkInterval);
+					     	reNetworkInterval=null;
+					     	disconnect();
+					    }
+   					},time);
+  				},2*time);
+ 				};
+				var speed={
+   				bad:function(){
+			    	console.log("网速过慢");
+			    	window.setTimeout(function(){
+			     		if(getConnectState()==1){
+			      		window.clearInterval(networkInterval);
+			      		networkInterval=null;
+			      		startSpeed();
+			     		}else{
+			      		disconnect();
+			     		}
+			    	},2*time);
+			   	},
+					medium:function(){
+    				console.log("网速中等");
+   				},
+   				great:function(){
+    				console.log("网速极佳");
+   				}
+ 				};
+ 				var startSpeed=function(){
+			  	window.clearInterval(speedInterval);
+			  	speedInterval=null;
+			  	if(getConnectState()==1){
+			   		speedInterval=window.setInterval(function(){
+			    		var start=new Date().getTime();
+			    		if(getConnectState()==1){
+			     			var img=document.getElementById("networkSpeedImage");
+			     			if(!!!img){
+			      			img=document.createElement("IMG");
+			      			img.id="networkSpeedImage";
+			      			img.style.display="none";
+			      			document.body.appendChild(img);
+						    }
+						    try{
+						      img.src="http://www.baidu.com/img/baidu_jgylogo3.gif?_t="+new Date().getTime();
+						      img.onload=function(){
+						       	var end=new Date().getTime();
+						       	var delta=end-start;
+						       	if(delta>200){
+						        	speed.bad();
+						       	}else if(delta>100){
+						        	speed.medium();
+						       	}else{
+						        	speed.great();
+						       	}
+						      };
+						    }catch(e){
+						    	speed.bad();
+								}
+					    }else{
+					     	disconnect();
+					    }
+					  }, time);
+					}else{
+					  disconnect();
+					}
+				};
+		 		var endSpeed=function(){
+		  		window.clearInterval(speedInterval);
+		  		speedInterval=null;
+		 		};
+ 				var startNetwork=function(){
+  				if(getConnectState()==1){
+   					networkInterval=window.setInterval(function(){
+    					if(getConnectState()==0){
+     						disconnect();
+    					}
+   					},time);
+  				}else{
+   					disconnect();
+  				}
+ 				};
+			 	var endNetwork=function(){
+			  	window.clearInterval(networkInterval);
+			  	networkInterval=null;
+			 	};
+			 	this.start=function(){
+				  startNetwork();
+				  startSpeed();
+			 	};
+ 				this.stop=function(){
+  				endSpeed();
+  				endNetwork();
+ 				};
+			};
+  		window.network=new network();
+		}).call(this);
+		network.start();
+	</script>
+</body>
+</html>

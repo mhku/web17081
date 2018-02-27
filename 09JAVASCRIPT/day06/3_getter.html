@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //添加一个实际存储年龄的_age变量
+    (function(){//外层函数
+        var _age=25;//受保护的变量
+        Object.defineProperties(eric,{
+            //添加访问器属性保护_age
+            age:{
+               get(){},
+               set(val){
+               },
+               enumerable:true,
+                configurable:false
+            }
+        });
+    })();
+    console.log(eric);
+    console.log(eric.age);
+    eric.age=26;
+    console.log(eric.age);
+</script>
+</body>
+</html>

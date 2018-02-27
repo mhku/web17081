@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		用户名称：<input type="text" id="uname" onblur="uname_blur()" onfocus="uname_focus()">
+		<span id="uname-show"></span>
+		<script src="common.js"></script>
+		<script>
+			function uname_blur(){
+				$("uname-show").innerHTML="uname失去焦点了!";
+			}
+
+
+			function uname_focus(){
+				$("uname-show").innerHTML="用户名6-18位";
+			}
+		</script>
+	</body>
+</html>

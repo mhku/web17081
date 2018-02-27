@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .myHighlight{
+            background-color: #0000ff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="example">
+    <button>上一页</button>
+    <button
+            v-on:click="choosePage(index)"
+            v-bind:class="{myHighlight:nowPage == (index+1)}"
+            v-for="(tmp,index) in pageList">
+        {{tmp}}
+    </button>
+    <button
+            :disabled="nowPage>=5"
+            @click="nextPage">下一页</button>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      pageList:[1,2,3,4,5],
+      nowPage:1
+    },
+    methods:{
+      //传递的参数时下标
+      choosePage:function (page) {
+        this.nowPage = (page+1);
+      },
+      //下一页
+      nextPage:function () {
+
+        if(this.nowPage >= 5){
+          return;
+        }
+        this.nowPage++;
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

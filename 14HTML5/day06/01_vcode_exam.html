@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+        canvas{background: #ddd}
+    </style>
+</head>
+<body>
+      <h3>Canvas验证码:</h3>
+      <h4>生产环境中验证码，都是服务器端技术生成</h4>
+      <canvas id="c2"></canvas>
+      <script>
+          //1:创建二个变量保存验证码宽度和高度
+          var w = 120;
+          var h = 30;
+          c2.width= w;
+          c2.height = h;
+          //2:填充背景颜色(随机)
+          var ctx = c2.getContext("2d");
+          ctx.fillStyle = rc(180,230);
+          ctx.fillRect(0,0,w,h);
+
+          //3:绘制随机字符
+          var pool = "ABCDEFGHJILOP";
+          for(var i=0;i<4;i++){
+            var c = pool[rn(0,pool.length)];
+            var fs = rn(18,40);  //随机字体大小
+            var deg = rn(-45,45);//随机旋转角度
+            var bg = rc(80,180); //随机文本颜色
+            ctx.font = fs+"px SimHei";//设置字体
+            ctx.fillStyle = bg;       //设置背景色
+            ctx.textBaseline = "top"; //基线
+            ctx.save();//保存当前状态
+            ctx.translate(30*i+15,15)//平移原点
+            ctx.rotate(deg*Math.PI/180)//旋转
+            ctx.fillText(c,-10,-15)//绘制文本
+            ctx.restore();//恢复
+          }
+          //4:绘制干扰线 6
+          for(var i=0;i<6;i++){
+            ctx.strokeWidth = 5;
+            ctx.strokeStyle = rc(0,255);//设置描边颜色 0-255
+            ctx.beginPath();//开始新路径
+            ctx.moveTo(rn(0,w),rn(0,h))//移动某个点
+            ctx.lineTo(rn(0,w),rn(0,h))//到某点画一条直线
+            ctx.stroke();//描边
+          }
+          //5:绘制干扰点 50
+          for(var i=0;i<50;i++){
+            ctx.fillStyle =rc(0,255);
+            ctx.beginPath();
+            ctx.arc(rn(0,w),rn(0,h),1,0,2*Math.PI);
+            ctx.fill();
+
+          }
+
+
+          function rn(min,max){
+            return Math.floor(
+              Math.random()*(max-min)+min);
+          }
+          function rc(min,max){
+            var r = rn(min,max);
+            var g = rn(min,max);
+            var b = rn(min,max);
+            return `rgb(${r},${g},${b})`;
+          }
+      </script>
+</body>
+</html>

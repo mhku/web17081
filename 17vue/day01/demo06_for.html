@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+
+    <ul>
+        <li v-for="tmp in list">
+            {{tmp}}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="(value,index) in list">
+            <h2>{{"这是第"+index+"个元素"}}</h2>
+            <p>{{value}}</p>
+        </li>
+    </ul>
+
+    <!-- v-for可以用在任何一个标签中 -->
+    <div>
+        <a v-for="(tmp,key,index) in car">
+            <p>{{
+                "index is "+index+
+                "属性为:"+key+
+                "值为"+tmp}}</p>
+            <br/>
+        </a>
+    </div>
+
+</div>
+
+<script>
+    var app = new Vue({
+      el:'#example',
+      data:{
+        list:[100,200,300,400,500],
+        car:{
+          brand:'BMW',
+          price:50
+        }
+      }
+    })
+    //这个和生命周期相关
+    console.log(app.list[0]);
+    app.list[0] = 666;
+
+
+</script>
+
+</body>
+</html>

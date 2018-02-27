@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <h4>获取数据sessionStorage</h4>
+   <script>
+     var name = sessionStorage["name"];
+     console.log("名称:"+name);
+     var age = sessionStorage.getItem("age");
+     console.log("年龄:"+age);
+     console.log("数据个数:"+sessionStorage.length);
+     console.log("获取i key值:"+sessionStorage.key(0));
+     sessionStorage.removeItem("age");
+     sessionStorage.clear();
+
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 判断指定年份是否为闰年
+			 * 参数:year , 表示要判断的年份
+			 * 返回值 ：
+			 *     true，表示为闰年，
+			 *     false，表示为平年
+			 */
+			function isRun(year){
+				return year%4==0&&year%100!=0||year%400==0;
+			}
+
+			/**
+			 * 输入年月日，判断是星期?
+			 * 1900.1.1 星期一 
+			 */
+			function calDate(){
+				//1、弹框中输入年月日
+				var year = Number(prompt("Year:"));
+				var month = Number(prompt("Month:"));
+				var day = Number(prompt("Day:"));
+				/*
+				  2、计算从1900.1.1 到 输入的日为止共多少天
+					2.1 累加从1900开始到year-1年为止的天数
+					2.2 累加从1月开始到month-1月为止的天数
+					2.3 累加day
+				*/
+				var totalDays = 0;
+				//2.1 累加从1900开始到year-1年为止的天数
+				var sYear = 1900;
+				while(sYear < year){
+					//sYear表示的是从1900年开始到year-1年为止的每一年
+					//如果sYear是闰年，则累加366到totalDays后，否则累加365到totalDays后面 
+					if(isRun(sYear)){
+						totalDays += 366;
+					}else{
+						totalDays += 365;
+					}
+
+					sYear++;
+				}
+
+				//2.2 累加从1月开始到month-1月为止的天数
+				var sMonth = 1;
+				while(sMonth < month){
+					//sMonth表示的就是从1月开始到month-1月为止的每一个月 
+					switch(sMonth){
+						case 1:
+						case 3:
+						case 5:
+						case 7:
+						case 8:
+						case 10:
+							totalDays += 31;
+							break;
+						case 4:
+						case 6:
+						case 9:
+						case 11:
+							totalDays += 30;
+							break;
+						case 2:
+							totalDays += 28;
+							if(isRun(year)){
+								totalDays += 1;
+							}
+							break;
+					}
+
+					sMonth++;
+				}
+				//2.3 累加day
+				totalDays += day;
+
+				//3、通过totalDays % 7 的结果，输出是星期几
+				var result = totalDays % 7;
+				var msg = "";
+				switch(result){
+					case 1:
+						msg = "一";
+						break;
+					case 2:
+						msg = "二";
+						break;
+					case 3:
+						msg = "三";
+						break;
+					case 4:
+						msg = "四";
+						break;
+					case 5:
+						msg = "五";
+						break;
+					case 6:
+						msg = "六";
+						break;
+					case 0:
+						msg = "日";
+						break;
+				}
+
+				console.log(year+"年"+month+"月"+day+"日是星期"+msg);
+			}
+
+			/**
+			日	一	二	三	四	五	六
+													1		2
+			3		4		5		6		7		8		9
+			
+			
+			*/
+		</script>
+
+		<button onclick="calDate()">打印日期</button>
+	</body>
+</html>

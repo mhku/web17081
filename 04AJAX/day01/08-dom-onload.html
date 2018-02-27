@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body onload="body_load()">
+		<p>
+			用户名称：
+			<input type="text" id="uname">
+			<span id="uname-show"></span>
+		</p>
+		<script src="common.js"></script>
+		<script>
+			/*function body_load(){
+				$("uname-show").innerHTML = "用户名6-18位";
+			}*/
+
+			window.onload = function(){
+				$("uname-show").innerHTML = "用户名6-18位";
+			}
+		</script>
+	</body>
+</html>

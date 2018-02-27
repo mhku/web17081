@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var MyInputComponent = React.createClass({
+    render:function(){
+      return <input type="text" ref="txtInput"/>
+    }
+  })
+
+  var MyButtonComponent = React.createClass({
+    handleClick:function(){
+      //能够通过MainComponent中的方法来实现
+      //读取MyInputCOmponent中用户输入的内容
+      this.props.func();
+    },
+    render:function(){
+      return <button onClick={this.handleClick}>clickMe</button>
+    }
+  })
+
+  var MainComponent = React.createClass({
+    getMsg:function(){
+      console.log('MainComponent中的方法被调用了');
+      var myInputComponentInstance = this.refs.myInput;
+      var result =
+        myInputComponentInstance.refs.txtInput.value;
+      console.log(result);
+
+    },
+    render:function(){
+      return <div>
+          <MyInputComponent ref="myInput"/>
+          <MyButtonComponent func={this.getMsg}/>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <MainComponent/>,
+    document.getElementById('example')
+  )
+</script>
+
+</body>
+</html>

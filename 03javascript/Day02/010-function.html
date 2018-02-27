@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1、声明一个函数 名称为 sayHello，函数体内，打印两句话，1、Hello World ，2，你好，世界
+			function sayHello(){
+				//打印2句话
+				console.log("Hello World");
+				console.log("你好，世界");
+			}
+
+			//2、调用sayHello函数
+			//sayHello();
+			//3、封装一个函数，名称为 testSayHello ,函数体内，调用 sayHello 函数
+			function testSayHello(){
+				sayHello();
+			}
+
+			//4、封装一个函数，名称为 showName , 接收一个字符串参数表示姓名，函数体内 打印 欢迎***
+			function showName(uname){
+				alert("欢迎："+uname);
+				console.log("欢迎："+uname);
+			}
+
+			function showInfo(brother,sister){
+				console.log(brother+"是哥哥");
+				console.log(sister+"是妹妹");
+			}
+
+			//5、声明一个带返回值的函数
+			function showUser(uname){
+				//返回 欢迎uname
+				return "欢迎:"+uname;
+			}
+			//6、调用 showUser() 函数
+			function testShowUser(){
+				var result = showUser("杨幂");
+				console.log(result);
+				alert(result);
+			}
+
+
+
+		</script>
+		<button onclick="testShowUser()">调用 testShowUser() 函数</button>
+
+		<button onclick="showInfo('范冰冰','李文华')">调用showInfo()函数</button>
+		
+		<button onclick="showName('文华.李')">调用showName()函数</button>
+
+		<button onclick="sayHello()">调用sayHello函数</button>
+
+		<button onclick="testSayHello()">调用testSayHello()</button>
+	</body>
+</html>

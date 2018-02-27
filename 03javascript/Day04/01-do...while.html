@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function printMsg(){
+				/*
+				 循环条件：输入exit为止，不是exit则继续输入
+				 循环操作：
+					1、用户从弹框中录入数据
+					2、判断不是 exit 再输出
+				*/
+				do{
+					var input = prompt("输入一段数据:");
+					if(input != "exit"){
+						console.log(input);
+					}
+				}while(input != "exit");
+			}
+			/**
+			 * 猜数字 游戏
+			 */
+			function guess(){
+				//1、声明一个随机数
+				var r=parseInt(Math.random()*100) + 1;
+				/*
+					循环猜数
+					1、循环条件：
+						1、猜对退出
+						2、输入 exit
+
+						即没猜对，也没输入 exit ，则继续玩游戏
+					2、循环操作：
+						1、输入数据
+						2、判断是否为 exit
+						3、不是 exit的话，则比较大小并给出提示
+				*/
+				do{
+					var input = prompt("请输入一个数据(exit为退出):");
+					if(input == "exit"){
+						alert("退出游戏!");
+					}else if(input > r){
+						alert("猜大了!");
+					}else if(input < r){
+						alert("猜小了!");
+					}else if(input == r){
+						alert("恭喜您，猜对了!");
+					}
+				}while(input != r && input != "exit");
+			}
+
+			
+		</script>
+		<button onclick="guess()">猜数字</button>
+	</body>
+</html>

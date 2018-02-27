@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>事件处理</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+ 	<form>
+		姓名:<input name="username"/><br>
+		密码:<input type="password" name="pwd"/><br>
+    爱好:<input type="checkbox" name="favs" value="running"/>跑步
+          <input type="checkbox" name="favs" value="swimming"/>游泳
+          <input type="checkbox" name="favs" value="basketball"/>篮球
+          <br>
+		<input type="submit"/>
+	</form>
+  <script>
+//"?username=张东&pwd=123456&favs=swimming&favs=basketball"
+var request={};
+function search2Req(){	
+	//获得location中的search
+	var search=location.search;
+	if(search!==""){//如果search不是""
+		//选取search中1位置到结尾的所有内容,按&切割，结果保存在arr中
+		var arr=search.slice(1).split("&");
+		for(var str of arr){//遍历arr
+			//将当前字符串按=切割,保存在subArr
+			var subArr=str.split("=");
+			var [key,value]=subArr;
+			//如果request中没有key属性
+			if(request[key]===undefined)
+				//为request添加新属性，subArr的第1个元素为属性名，subArr的第2个元素为属性值
+				request[key]=value;
+			else{
+				//如果request[key]不是数组
+				if(!Array.isArray(request[key])){
+					//定义数组[  request[key]  ]
+					//将request[key]改为数组
+					request[key]=[ request[key] ];
+				}
+				//将value追加到request[key]
+				request[key].push(value);
+			}
+		}
+	}
+}
+search2Req();
+console.log(request);
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg图形创建--html5之后标准</title>
+    <style>
+        body{text-align: center}
+        svg{background: #ddd}
+    </style>
+</head>
+<body>
+  <svg width="500" height="400">
+      <rect x="230" width="30" height="300"
+      fill="#faa" fill-opacity="0.5"
+      stroke="#800" stroke-opacity="0.5"
+      id="r3"></rect>
+  </svg>
+  <script>
+     r3.onmouseover = function(){
+       this.setAttribute("fill-opacity",1);
+       this.setAttribute("stroke-opacity",1);
+     };
+     r3.onmouseout = function(){
+       this.setAttribute("fill-opacity",0.5);
+       this.setAttribute("stroke-opacity",0.5);
+     };
+  </script>
+</body>
+</html>

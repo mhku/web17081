@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str="No zuo no die No can no bibi";
+			var kws=str.match(/yes/ig);
+			str=str.replace(/yes/ig,"**");
+			               //yes
+			console.log(str);
+			console.log(
+				"共替换"+(kws!=null?kws.length:0)+"处"
+			);
+
+			//派出所:PCS; 公安:GA; 干警:GJ; 公共安全:GGAQ
+			var str=
+				"派出所的公安干警负责维护公共安全秩序";
+			  //PCS     GAGJ              GGAQ
+			str=str.replace(
+				/派出所|公安|干警|公共安全/g,
+				function(kw){
+					return kw=="派出所"?"PCS":
+					         kw=="公安"?"GA":
+									 kw=="干警"?"GJ":
+									            "GGAQ";
+				}
+			);
+			console.log(str);
+		</script>
+	</body>
+</html>

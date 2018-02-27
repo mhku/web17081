@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1、弹出一个输入提示框，输入金额，并保存在变量 money 中
+			var money = prompt("请输入一个金额:");
+			//2、将 money + 10 ，再输出 +10后的结果
+			//money = money + 10;
+			//console.log("总金额为:"+money);
+			//3、注释步骤2，使用typeof检查money的类型
+			console.log(typeof(money));
+			//4、将 money 转换为一个数字，再+10并打印输出
+			money=Number(money);
+			console.log(typeof(money));
+			money=money + 10;
+			console.log("总金额为:"+money);
+		</script>
+	</body>
+</html>

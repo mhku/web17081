@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var input = prompt("请输入一个字符:");
+			//1、判断是否为英文字符
+			//1.1 判断是否为小写英文
+			var isLow = input>="a" && input <= "z";
+			//1.2 判断是否为大写英文
+			var isCap = input >= "A" && input <= "Z";
+			//判断是否为英文
+			var isENG = isLow || isCap;
+			isENG && console.log("是英文字符");
+			//2、判断是否为数字
+			var isNUM = input >= 0 && input <= 9;
+			isNUM && console.log("是数字");
+			//3、判断是否为汉字
+			var isCHN = input >= "\u4e00" && input <= "\u9fa5";
+			isCHN && console.log("是汉字");
+		</script>
+	</body>
+</html>

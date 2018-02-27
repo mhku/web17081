@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .myRed{
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<div id="example">
+    <p v-bind:class="{myRed:!isUserLogin}">{{msg}}</p>
+    <h2 v-bind:style="{backgroundColor:myBgColor}">
+        hello Vue directives
+    </h2>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      isUserLogin:false,
+      myBgColor:'#00ff00'
+    }
+  })
+</script>
+
+</body>
+</html>

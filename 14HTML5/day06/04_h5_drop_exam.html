@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+    </style>
+</head>
+<body>
+   <h4>拖动目标</h4>
+   <img src="img/1.png" id="trash" />
+   <hr>
+   <div id="box">
+    <img src="img/p3.png" id="p3" />
+    <img src="img/p3.png" id="p4" />
+    <img src="img/p3.png" id="p5" />
+   </div>
+   <script>
+  var ids = null;//当前被拖动飞机编号
+
+  //拖动事件的源对象可能触发事件
+  var list = document.querySelectorAll("#box img");
+  //循环每个图片对象绑定三个事件
+  for(var i=0;i<list.length;i++){
+    var plane = list[i];
+    plane.ondragstart = function(){
+      ids = this.id;
+    console.log(1)}
+    plane.ondrag = function(){console.log(2)}
+    plane.ondragend = function(){console.log(3)}
+  }
+  //拖动事件的目标对象可能触发事件
+  trash.ondragenter = function(){console.log(4)}
+  trash.ondragover = function(e){
+    e.preventDefault();
+    console.log(5)}
+  trash.ondragleave = function(){console.log(6)}
+  trash.ondrop = function(){
+   var img = document.getElementById(ids);
+   box.removeChild(img);
+    console.log(7)}
+   </script>
+</body>
+</html>

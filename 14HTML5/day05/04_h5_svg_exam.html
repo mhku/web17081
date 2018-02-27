@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+        svg{background: #ddd}
+    </style>
+</head>
+<body>
+   <h3>高斯模糊滤镜</h3>
+   <svg id="s2" width="500" height="400">
+    <defs>
+       <filter id="f2">
+           <feGaussianBlur stdDeviation="5"></feGaussianBlur>
+       </filter>
+    </defs>
+     <text font-size="70" y="100">达内科技</text>
+     <text font-size="70" y="200" filter="url(#f2)">达内科技</text>
+   </svg>
+</body>
+</html>
+
+
+

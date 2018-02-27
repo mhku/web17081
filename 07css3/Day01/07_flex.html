@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #d1{
+            border: 1px solid #000000;
+            height:1000px;
+            display: flex;
+            /*justify-content: flex-start;*/
+
+            /*flex-direction: column;*/
+            flex-direction:row;
+            justify-content: flex-start;
+        }
+        #d1 div{
+            width: 200px;
+            height: 200px;
+        }
+        .c1{  background: red;  order: 20;}
+        .c2{
+            background:green ;
+            order: 10 ;
+            flex-grow: 2;
+        }
+        .c3{
+            background:blue ;
+            order: 15;
+            flex-grow: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="d1">
+    <div class="c1">class c1</div>
+    <div class="c2">class c2</div>
+    <div class="c3">class c3</div>
+</div>
+</body>
+</html>

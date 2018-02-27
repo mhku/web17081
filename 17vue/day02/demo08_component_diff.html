@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <my-header></my-header>
+    <my-main></my-main>
+</div>
+
+<script>
+
+  Vue.component('my-main',{
+    template:`<div>
+    <h1>这是主页面的标题</h1>
+    <my-footer></my-footer>
+    </div>`
+  })
+
+  Vue.component('my-footer',{
+    template:'<h1>这是页尾</h1>'
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS'
+    },
+    components:{
+      'my-header':{
+        template:'<h1>这是页头</h1>'
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

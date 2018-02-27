@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function testEncode(){
+				var kw = prompt("输入搜索关键字:");
+				var url = "https://www.baidu.com/s?wd="+kw;
+				url = encodeURI(url);
+				console.log(url);
+			}
+
+			function testEval(){
+				var input = prompt("输入JS表达式:");
+				eval(input);
+			}
+		</script>
+		<button onclick="testEncode()">testEncode</button>
+		<button onclick="testEval()">testEval</button>
+	</body>
+</html>

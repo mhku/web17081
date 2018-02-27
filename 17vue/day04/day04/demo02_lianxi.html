@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+<body>
+<div id="example">
+    <!--<router-view></router-view>-->
+    <father></father>
+</div>
+</body>
+<script>
+    Vue.component('father',{
+        methods:{
+          jump:function(desPath){
+
+          }
+        },
+        template:`
+            <router-view></router-view>
+        `
+    })
+    var MainComponent =  Vue.component('main-component',{
+        methods:{
+            jump:function(){
+                this.$router.push('/person');
+//                this.$parent.jump('/person');
+            }
+        },
+        template:`
+            <div>
+                <h1>这是主页面</h1>
+                <button @click="jump">跳转到person页面</button>
+            </div>
+        `
+    })
+    var PersonComponent=Vue.component('person-component',{
+        template:`
+            <div>
+               <h1>这是个人中心页面</h1>
+               <router-link to="/setting">去设置页面</router-link>
+
+            </div>
+        `
+    })
+    var SettingComponent=Vue.component('setting-component',{
+        methods:{
+            jump:function(){
+                this.$router.push("/main");
+            }
+        },
+        template:`
+            <div>
+                <h1>这是设置页面</h1>
+                <button @click="jump">去主页面</button>
+            </div>
+        `
+    })
+    const myRoutes=[
+        {
+            path:"",
+            component:MainComponent
+        },
+        {
+            path:"/main",
+            component:MainComponent
+        },
+        {
+            path:"/person",
+            component:PersonComponent
+        },
+        {
+            path:"/setting",
+            component:SettingComponent
+        }
+    ];
+    const myRouter=new VueRouter({
+        routes:myRoutes
+    })
+    new Vue({
+        el:"#example",
+        router:myRouter,
+        data:{
+            msg:"hello vue"
+        }
+    })
+</script>
+</html>

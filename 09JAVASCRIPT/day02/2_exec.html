@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  var msg="明明喜欢我，却不告诉我。别理我，我想静静!静静是谁?你先告诉我明明是谁?";
+  //0123                                           index:18
+    var reg=/明月|静静/g;
+    do{
+        var arr=reg.exec(msg);
+//        var arr=["静静"];
+        console.dir(arr);
+        if(arr!=null){
+            console.log(arr.index,arr[0]);
+        }
+        else break;
+    }while(true)
+</script>
+</body>
+</html>

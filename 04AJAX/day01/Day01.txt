@@ -1,0 +1,271 @@
+1、URL
+	1、URL的作用
+		用于表示互联网上任意一个资源的位置
+		
+	2、详解
+		格式：
+			<scheme>://<user>:<pwd>@<host>:<port>/<path>;<params>?<query>#<frag>
+		
+		scheme : 方案，协议，以哪种方式到服务器获取资源,协议不区分大小写，常见的协议：http、https、ftp
+		host : 主机名，服务器的主机名 或 IP地址 或 域名(由DNS转换为IP地址)
+		port : 端口号
+		user : 用户名 ，访问某些特定资源时需要用到信息
+		pwd : 密码 ，访问某些特定资源时需要用到信息
+		path : 路径 ，资源在服务器上具体存放的位置
+		params : 参数 
+		query : 查询字符串，要传递给服务器的数据
+			http://localhost/a.php?uname=lwh&uage=40
+		frag : 锚点
+			http://localhost/a.html#NO1
+2、HTTP协议
+	1、什么是HTTP
+		Hyper Text Transfer Protocol ：超文本传输协议
+		规范了数据时如何打包 以及 传递的
+	2、详解
+		1、请求(request)消息
+			客户端要带给服务器的数据都有哪些，由三部分组成
+			1、请求起始行
+				1、请求方法
+					1、GET
+						表示客户端向获取服务器资源时使用
+						特点：
+							1、无请求主体
+							2、靠地址栏传递查询字符串
+
+					2、POST
+						表示想传递数据给服务器时使用
+						特点：
+							1、有请求主体
+					3、PUT
+						表示客户端想放置文件到服务器(禁用)
+						特点：
+							1、有请求主体
+					4、DELETE
+						表示客户端要删除服务器上的数据(禁用)
+					5、HEAD
+						表示客户端只想获取指定的响应头
+					6、CONNECT
+						测试连接
+					7、TRACE
+						追踪请求路径
+					8、OPTIONS
+						选项，保留以后使用
+				2、请求URL
+				3、协议版本 ：HTTP/1.1
+			2、请求头
+				1、Host:localhost
+					作用：告诉服务器请求哪一个虚拟主机
+				2、Connection:keep-alive
+					作用：告诉服务器要进行持久连接
+				3、User-Agent:
+					作用：告诉服务器自己(浏览器)的类型
+				4、Accept-Language:zh-cn
+					作用：告诉服务器自己能接收的自然语言
+				5、Accept-Encoding:gzip
+					作用：告诉服务器自己能接收的数据压缩类型是什么
+				6、Referer:http://localhost/04-AJAX/Day01/01-http.html
+					作用：告诉服务器请求是来自于哪个页面
+
+					
+			3、请求主体
+				Form Data
+		2、响应(response)消息
+				1、响应起始行
+					1、协议版本号 : HTTP/1.1
+					2、响应状态码
+						作用：告诉浏览器，服务器的响应状态是什么(有问题，还是没问题，有问题的话，问题大概是什么)
+						1xx ：100 - 199  ，提示信息
+						2xx ：成功响应 
+							200 ：OK
+						3xx ：需要进行重定向
+							301 ：永久性重定向
+							302 ：临时重定向
+							304 ：Not Modified
+						4xx ：客户端请求错误
+							404 ：Not Found，请求资源不存在
+							403 ：Forbidden
+							405 ：Method Not Allowed，请求方法不被允许
+						5xx ：服务器运行错误
+							500 ：服务器内部错误
+					3、原因短句
+						对状态码的简单解释
+				2、响应头
+					1、Date:
+						作用：告诉浏览器，服务器的响应时间
+					2、Connection
+						作用：告诉浏览器已经启动持久连接
+					3、Content-Type
+						作用：响应主体的类型是什么，告诉浏览器，用什么样的方式解析响应主体
+						1、text/html : 响应回来的数据是html文本
+						2、text/plain : 响应回来的数据是普通文本
+						3、text/css : 响应回来的数据是css样式
+						4、application/javascript : 响应回来的数据是 js 脚本代码
+						5、application/xml : 响应回来的数据是 xml 格式的字符串
+						6、application/json : 响应回来的数据是 json 格式的字符串
+						7、images/jpeg : 响应回来的数据是 图片
+				3、响应主体
+					Response
+3、缓存
+	1、什么是缓存 & 工作原理
+		客户端将服务器响应回来的数据进行自动保存，当再次访问时，直接使用使用保存的数据
+	2、缓存优点
+		1、减少了冗余的数据的传输，节省客户端流量
+		2、可以节省服务器带宽
+		3、降低了对服务器资源的消耗和运行要求
+		4、降低了由于远距离而造成的延时加载
+	3、与缓存相关的消息头
+		1、Cache-Control 消息头
+			作用：从服务器将文档传到客户端之时起，可以认为此文档处于新鲜的秒数
+
+			语法:
+				Cache-Control:max-age=处于新鲜的秒数
+				ex	
+					Cache-Control:max-age=3600;
+					Cache-Contorl:max-age=0;每次都从服务器下载新资源
+		2、Expires 消息头
+			作用：指定缓存过期的确切时间
+			语法：
+				Expires:Mon,25 Sep 2017,07:00:00 GMT
+
+				如果希望客户端不缓存，可以给一个过期的时间
+				Expires:Sun,24 Sep 2017,00:00:00 GMT
+				Expires:0; --此方法不标准，执行性不是特别的好
+	4、在网页上设置消息头
+		1、更改服务器配置
+		2、网页上增加消息头
+			1、html
+				<meta http-equiv="消息头" content="值">
+				ex:
+					<meta http-equiv="Cache-Control" content="max-age=3600">
+
+					<meta http-equiv="Expires" content="0">
+			2、php
+				header("Expires:0");
+				Response.AddHeader("Expires","0");
+4、DOM操作
+	1、什么是DOM
+		完整的Javascript的组成
+			1、JS核心 ：ECMA Script
+			2、DOM ：Document Object Model
+				文档对象模型
+				让JS动态的操作页面的元素
+				<input type="text">
+				<div>这是一个div</div>
+			3、BOM ：Browser Object Model
+				浏览器对象模型
+				让JS动态的操作浏览器
+
+	2、使用JS获取页面上的某个元素
+		1、为元素增加ID属性
+			<div id="d1">这是一个div</div>
+			<input type="text" id="uname">
+		2、在JS中，允许通过元素的ID来获取页面指定元素
+			var elem=document.getElementById("元素ID");
+			elem就是指定id元素在JS中的表现形式(DOM对象)
+
+			练习：
+				1、创建02-dom-getElementById.html
+				2、在页面中创建一个 div，id为 d1，内容自定义
+				3、在页面中创建一个 按钮，点击时，将id为d1的元素获取出来，并打印输出在控制台上，观察结果
+	3、获取 / 设置 某元素中的内容
+		<div id="d1">这是一个div</div>
+		DOM对象的一个属性：
+			innerHTML
+		表示的就是标签内的文本
+		练习：
+			1、上个练习基础上完成
+			2、添加一个按钮，点击时，获取div中的文本，并打印在控制台上 
+			3、添加一个按钮，点击时，将div中的文本内容更改为 "这是我的第一个DOM操作"
+	4、获取 / 设置 表单控件的数据
+		<input type="text" id="uname" value="">
+		<input type="password" id="upwd" value="">
+		<select id="province">
+			<option value="0">北京</option>
+		</select>
+
+		在DOM中，表单控件们，也是通过DOM对象的value属性来获取/设置 值的
+
+		步骤：
+			1、通过id获取表单控件元素(DOM对象)
+			2、通过DOM对象的 value 属性 获取/设置控件的值
+		练习：
+			1、页面中创建一个文本框(id=uname),div(id="d1")，一个按钮
+			2、单击按钮时，将文本框的数据，以一级标题的形式显示在div中
+	5、简化 document.getElementById()
+		document.getElementById()的作用：
+			根据 "指定的ID值" 获取 对应的 "HTML元素"
+			/**
+			 * 根据指定的ID值，获取对应的HTML元素
+			 * 参数 id : 要获取的元素的ID值
+			 * 返回值  : 获取的对应的HTML元素
+			 */
+			function $(id){
+				return document.getElementById(id);
+			}
+		练习：
+			1、创建一个 common.js 的文件，封装$(),负责接收一个id值作为参数，并返回对应的DOM对象
+			2、05-dom-$-exercise.html
+				1、创建一个文本框，div，按钮
+				2、点击按钮时，将文本框的数据 以 一级标题的形式显示在 div中(使用$())
+	6、HTML 元素的事件
+		1、什么是事件
+			允许通过用户的行为来激发的操作就是事件
+			常用事件：onclick,... ...
+		2、其它事件
+			1、文本框 和 密码框 - onblur
+				onblur事件：失去焦点时的事件
+			2、文本框 和 密码框 - onfocus
+				onfocus事件：获取焦点时的事件
+			3、body 的onload 事件
+				当网页加载时要执行的操作
+			4、select 的 onchange 事件
+				当选项框中的内容发生改变时要触发的事件
+		练习：
+			1、创建07-dom-event-exercise.html
+			2、页面中创建如下几个元素
+				1、文本框-用户名称 ：uname
+				2、密码框-用户密码 ：upwd
+				3、密码框-重复密码 ：cpwd
+				以上三个元素后，各创建一个span
+			3、添加以下事件
+				1、文本框获取焦点时，提示，用户名称6-18位
+				2、文本框失去焦点时，判断，用户名称是否为空并给出提示(用户名不能为空 / 通过)
+				3、upwd获取焦点时，提示，密码6-18位
+				4、upwd失去焦点时，判断，密码是否为空给出响应提示
+				5、cpwd失去焦点时，判断 cpwd 的值是否与 upwd 的值一致，并给出提示
+
+
+
+
+
+作业：
+1、模拟省市级联
+	var province = ["黑龙江","吉林","辽宁"];
+	var city = [
+		["哈尔滨","齐齐哈尔","牡丹江"],
+		["长春","吉林","四平"],
+		["沈阳","大连","鞍山"]
+	];
+
+	1、网页加载时，显示 province中的数据到 sel_province 中
+	2、再增加一个 <select id="sel_city">
+	3、当更改 sel_province 中数据的时候，把对应的市级信息显示在 sel_city 中
+2、提供以下数组，完成加载操作，参考作业-2.png
+	var infos = [
+		["《西游记》","吴承恩","古代神话故事"],
+		["《西游记》","吴承恩","古代神话故事"],
+		["《西游记》","吴承恩","古代神话故事"],
+		["《西游记》","吴承恩","古代神话故事"]
+	];
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn" onclick="show()">刮刮乐</button>
+<script>
+    setInterval(function () {
+        show();
+    },1000)
+    function show(){
+        var r=Math.random();
+        btn.innerHTML=
+                r<0.001?"一等奖：<br>Mac笔记本":
+                        r<0.01?"二等奖：<br>小米手机":
+                                r<0.1?"三等奖：<br>蓝牙音箱":
+                                        "参与奖：<br>女票一枚";
+    }
+
+</script>
+</body>
+</html>

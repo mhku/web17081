@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <p>{{msg}}</p>
+    <!--调用组件-->
+    <my-component></my-component>
+    <my-component/>
+</div>
+
+<script>
+
+    //组件的创建
+    Vue.component('my-component',{
+      template:'<h1>hello Component</h1>'
+    });
+
+    new Vue({
+        el: '#example',
+        data: {
+            msg: 'Hello VueJS'
+        }
+    })
+</script>
+
+</body>
+</html>

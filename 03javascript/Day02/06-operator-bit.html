@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var num = 323;
+			var result = num & 1;
+			console.log(result);
+
+			var num1 = 123.456;
+			var result1 = num1 | 0;
+			console.log(result1);
+
+
+			var a = 123;
+			var b = 321;
+			console.log("交换前：");
+			console.log(a,b);
+			//实现交换
+			a = a ^ b;
+			b = b ^ a;
+			a = a ^ b;
+			console.log("交换后：");
+			console.log(a,b);
+		</script>
+	</body>
+</html>

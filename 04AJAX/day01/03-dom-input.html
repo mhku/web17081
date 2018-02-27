@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="uname">
+		<div id="d1"></div>
+		<button onclick="getValue()">按钮</button>
+
+		<script>
+			function getValue(){
+				//1、获取 uname 元素
+				var uname = document.getElementById("uname");
+				//2、获取uname的value并打印在控制台上
+				//console.log(uname.value);
+
+				//3、设置 uname 的value值为：请输入用户名
+				//uname.value="请输入用户名";
+
+				//4、获取 uname 的值，并 拼 <h1> ，显示在 d1 中
+				var value = uname.value;
+				var d1 = document.getElementById("d1");
+				d1.innerHTML = "<h1>"+value+"</h1>";
+			}
+		</script>
+	</body>
+</html>

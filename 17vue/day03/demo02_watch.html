@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <p>{{msg}}</p>
+    <test-component></test-component>
+</div>
+
+<script type="text/x-template" id="myTemplate">
+    <!--当用户在输入时候 在控制台打印当前输入的值-->
+    <input type="text" v-model="userInput">
+</script>
+
+<script>
+
+    Vue.component('test-component',{
+//      template:'<h1></h1>'
+//      template:`<h1></h1>`
+        template:'#myTemplate',
+        data:function () {
+          return {
+            userInput:''
+          }
+        },
+        watch:{
+          userInput:function () {
+            console.log(this.userInput);
+          }
+        }
+    })
+
+    new Vue({
+        el: '#example',
+        data: {
+            msg: 'Hello VueJS'
+        }
+    })
+</script>
+
+</body>
+</html>

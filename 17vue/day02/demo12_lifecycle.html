@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <button @click="handleClick">修改count</button>
+    <test-component v-if="myCount<3"></test-component>
+</div>
+
+<script>
+
+  Vue.component('test-component',{
+    data:function(){
+      return {
+        count:0
+      }
+    },
+    methods:{
+      handleClick:function () {
+        this.count++;
+        console.log(this.count);
+      }
+    },
+    template:`
+        <div>
+            <button @click="handleClick">clickMe</button>
+            <h1>Hello Component LifeCycle</h1>
+            <h2>{{count}}</h2>
+        </div>`,
+    beforeCreate:function(){
+      console.log('before create');
+    },
+    created:function () {
+      console.log('in created hook function');
+    },
+    mounted:function () {
+      console.log('组件中的template中的元素已经挂载到DOM');
+    },
+    //必须是在绑定到视图中的数据 发生变化时 才会执行
+    beforeUpdate:function(){
+      console.log('数据准备有更新');
+    },
+    updated:function () {
+      console.log('数据有变化');
+    },
+    destroyed:function () {
+      console.log('组件销毁，可以做收尾工作');
+    }
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      myCount:0
+    },
+    methods:{
+      handleClick:function () {
+        this.myCount++;
+        console.log(this.myCount);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

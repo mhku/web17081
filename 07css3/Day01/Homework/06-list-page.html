@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="common.js"></script>
+		<script>
+			/**
+			 * 该函数负责加载要看的所有的数据
+			 * currentPage : 当前想看的页数是第几页
+			 */
+			function loadUser(currentPage){
+				//1、创建 xhr
+				var xhr = createXhr();
+				//2、创建请求
+				//获取 pageSize 的值
+				var pageSize = $("pageSize").value;
+				xhr.open("get","06-list-page.php?currentPage="+currentPage+"&pageSize="+pageSize,true);
+				//3、设置回调函数
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var list=JSON.parse(xhr.responseText);
+						var html = "";
+						for(var i=0;i<list.length-1;i++){
+							var user = list[i];
+							html += "<tr>";
+								html += "<td>"+user.uname+"</td>";
+								html += "<td>"+user.email+"</td>";
+								html += "<td>"+user.phone+"</td>";
+								html += "<td>"+user.user_name+"</td>";
+							html += "</tr>";
+						}
+						$("show-body").innerHTML = html;
+
+						//将 分页的数据 取出来，拼 a ，再显示在 tfoot中
+						var pageInfo = list[list.length-1];
+						var pageObj = JSON.parse(pageInfo);
+						//拼 tr ，td ，a
+						var pageHTML = "<tr>";
+							pageHTML += "<td>";
+								pageHTML += "<a href='javascript:loadUser(1)'>首页</a>";
+							pageHTML += "</td>";
+							pageHTML += "<td>";
+								pageHTML += "<a href='javascript:loadUser("+pageObj.prePage+")'>上一页</a>";
+							pageHTML += "</td>";
+							pageHTML += "<td>";
+								pageHTML += "<a href='javascript:loadUser("+pageObj.nextPage+")'>下一页</a>";
+							pageHTML += "</td>";
+							pageHTML += "<td>";
+								pageHTML += "<a href='javascript:loadUser("+pageObj.totalPage+")'>尾页</a>";
+							pageHTML += "</td>";
+						pageHTML += "</tr>";
+						$("show-foot").innerHTML = pageHTML;
+					}
+				}
+				//4、发送请求
+				xhr.send(null);
+			}
+
+			window.onload = function(){
+				loadUser(1);
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<b>每页显示</b>
+			<input type="text" id="pageSize" value="10">
+			<b>条记录</b>
+		</div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>登录名称</th>
+					<th>电子邮件</th>
+					<th>联系方式</th>
+					<th>用户姓名</th>
+				</tr>
+			</thead>
+			<tbody id="show-body"></tbody>
+			<tfoot id="show-foot">
+				
+			</tfoot>
+		</table>
+	</body>
+</html>

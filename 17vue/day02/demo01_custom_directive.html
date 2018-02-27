@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <button @click="handleClick">clickMe</button>
+    <h1 v-if="count<5" v-change="count">hello custom directive</h1>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      count:1
+    },
+    methods:{
+      handleClick:function () {
+        this.count++;
+      }
+    },
+    directives:{
+      change:{
+        bind:function (el) {
+          console.log(arguments);
+          el.innerHTML = 'Hello World';
+        },
+        update:function(el,bindings){
+          //如果在调用指令是 传来了参数，当参数发生变化时候，
+          //将会执行指令内部的update方法
+          console.log('in update');
+          console.log(bindings);
+        },
+        unbind:function(){
+          console.log('in unbind');
+        }
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

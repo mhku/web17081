@@ -1,0 +1,157 @@
+1、AJAX
+	1、名词解释
+		1、同步(Synchronous)
+			在一个任务进行当中时，不能开启其它的任务
+			同步访问：浏览器在向服务器发送请求的时候，浏览器只能等待服务器的响应，不能做其它的事情。
+			出现场合：
+				1、地址栏输入网址访问页面
+				2、a标记的默认跳转
+				3、submit按钮的表单提交
+		2、异步(Asynchronous)
+			在一个任务进行当中时，可以开启其它的任务
+			异步访问：浏览器在向服务器发送请求的时候，不耽误用户在网页上做其它操作
+			使用场合：
+				1、用户名的重复验证
+				2、聊天室
+				3、股票走势图
+				4、搜索建议(百度，京东，淘宝 的搜索框)
+	2、什么是AJAX
+		Asynchronous Javascript And Xml
+		异步的       JS         和  Xml
+
+		本质：使用JS提供的异步对象(XMLHttpRequest)，异步的向服务器发送请求，并接收响应数据(格式是Xml，但已过时)
+
+		AJAX中，服务器响应回来的是部分的数据而不是完整的页面，并且可以以无刷新的效果来更改页面中的局部内容
+	3、创建 XMLHttpRequest 对象 - 异步对象(xhr)
+		标准创建：var xhr = new XMLHttpRequest();
+		IE8以下：
+			var xhr=new ActiveXObject("Microsoft.XMLHttp");
+
+		允许通过 window.XMLHttpRequest 来判断浏览器是否支持标准创建
+
+		如果浏览器不支持标准创建法，那么window.XMLHttpRequest 的值就为 null
+
+		if(window.XMLHttpRequest){
+			var xhr = new XMLHttpRequest();
+		}else{
+			var xhr = new ActiveXObject("Microsoft.XMLHttp");
+		}
+
+		练习：
+			1、创建一个xhr对象，并且将创建好的对象打印在控制台上，观察结果
+			2、将创建xhr对象的步骤封装到一个函数中
+				1、创建一个函数，createXhr()
+				2、在函数体内，判断浏览器是否支持标准创建，如果支持返回标准创建的对象，否则返回创建好的IE8以下的异步对象
+	4、XHR的常用属性和方法(难点)
+		1、open()
+			作用：创建请求
+			语法：xhr.open(method,url,isAsyn);
+				1、method
+					string 类型
+					请求方式 ：get , post
+				2、url
+					string 类型
+					请求地址
+				3、isAsyn
+					boolean 类型
+					指定采用同步(false)还是异步(true)的方式发送请求
+				练习：
+					1、创建一个网页 03-getresponse.html,网页中创建一个按钮，单击时，完成以下功能：
+						1、获取 xhr 对象
+						2、创建一个请求，采用异步的方式，get的请求方式，向03-response.php发送一个请求
+						3、创建 03-response.php , 响应输出一句话 "我的第一个AJAX"程序
+		2、readyState
+			作用：表示 xhr 对象的 请求状态
+			值 ： 0-4 表示5个状态
+				0 : 请求尚未初始化
+				1 : 已经打开到服务器的链接，正在发送请求中
+				2 : 请求完成
+				3 : 正在接收服务器端的响应
+				4 : 接收响应数据成功
+				注意：当 readyState的值为4的时候，才表示所有的响应都已经接收完毕
+		3、status
+			作用：表示的是服务器的响应状态码
+			值：
+				只记住一个值即可 -> 200
+				当 status 的值是200的时候，表示服务器已经正确的处理请求以及给出响应
+		4、onreadystatechange - 事件
+			作用：当 xhr 的 readyState 属性值发生改变的时候，要自动激发的操作
+			语法：
+				xhr.onreadystatechange=function(){
+					//判断xhr.readyState为4并且xhr.status为200，就可以获取 "响应数据" 了
+					if(xhr.readyState==4&&xhr.status==200){
+						//接收响应回来的结果
+						var resText=xhr.responseText;
+						console.log(resText);
+					}
+				}
+		5、send()
+			作用：发送请求
+			语法：xhr.send(body);
+				body : 请求主体
+				如果没有请求主体的话，body位置处为null
+				如果有请求主体，则放请求的主体数据 
+	5、发送异步请求的步骤
+		1、创建 xhr 对象
+		2、创建请求
+		3、设置 xhr 的 onreadystatechange (回调函数)
+			判断状态，并接收响应数据
+		4、发送请求
+
+		练习1：
+			1、创建05-response.php，响应输出一句话 "我的AJAX练习"
+			2、创建05-ajax-exercise.html
+				增加一个按钮，增加一个div(id="show")
+				单击按钮时，异步的向 05-response.php 发送一个请求，并将响应回来的数据 以 h1 标题的方式显示在 div 中
+	6、使用 GET 提交方式，发送请求数据
+		05-response.php?name1=value1&name2=value2
+
+		在php中取值：
+		$_REQUEST["name1"];
+		$_REQUEST["name2"];
+
+		练习：
+			1、创建 07-ajax-get.html
+				添加一个文本框(id=uname)
+				添加一个按钮
+				单击按钮时，将文本框中的数据作为参数，异步的提交给 07-ajax-get.php 页面，并且将响应回来的数据，显示在一个div里
+			2、创建 07-ajax-get.php 
+				1、接收 异步请求提交过来的数据
+				2、将数据拼成 "欢迎xxx",再响应给浏览器
+	7、使用AJAX发送POST请求
+		注意两点：
+			1、post的请求数据要放在请求主体中
+				xhr.send("name1=value1&name2=value2");
+			2、在发送请求之前，需要手动修改请求消息头
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+
+http://localhost/04-AJAX/Day02/06-ajax.php?uname=wenhua.li&upwd=123456
+
+
+作业：
+	1、登录名重复性验证，参考学子商城-注册页
+		数据库检查用户名是否存在
+	2、使用AJAX的POST请求方式完成 异步的注册
+		1、提供一个 register.html 页面
+			包含以下表单控件
+				uname - <input type="text">
+				upwd - <input type="password">
+				email - <input type="email">
+				phone - <input type="text">
+				user_name - <input type="text">
+				gender - <select>
+
+				注册按钮：<input type="button">
+				单击时，使用POST提交方式，异步的发送给 register.php，并且完成注册给出响应(注册成功 / 注册失败)
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <my-login></my-login>
+</div>
+
+<script>
+
+    Vue.component('my-button',{
+      props:['btnName'],
+      template:'<button>{{this.btnName}}</button>'
+    })
+
+    Vue.component('my-input',{
+      props:['labelName'],
+      template:`<div>
+            <label>{{this.labelName}}</label>
+            <input type="text"/>
+        </div>`
+    })
+
+    Vue.component('my-login',{
+      template:`
+        <form>
+            <my-input labelName="用户名"></my-input>
+            <br/>
+            <my-input labelName="密码"></my-input>
+            <br/>
+            <my-button btnName="登录"></my-button>
+            <my-button btnName="注册"></my-button>
+        </form>
+      `
+    })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="c3"></canvas>
+    <script>
+
+      var progress = 0;//所有图片加载进度 25 25 25 25
+      //示例:解决一个问题: 多图片加载
+      var ctx = c3.getContext("2d");
+      var imgBg = new Image();
+      imgBg.src = "img/bg.jpg";
+      imgBg.onload = function(){
+        progress+=25;
+        if(progress==100){
+          startDraw();
+        }
+      }
+      var play = new Image();
+      play.src = "img/play.png";
+      play.onload = function(){
+        progress+=25;
+        if(progress==100){
+          startDraw();
+        }
+      }
+      var disc = new Image();
+      disc.src = "img/disc.png";
+      disc.onload = function(){
+        progress+=25;
+        if(progress==100){
+          startDraw();
+        }
+      }
+      var pause = new Image();
+      pause.src = "img/pause.png";
+      pause.onload = function(){
+        progress+=25;
+        if(progress==100){
+          startDraw();
+        }
+      }
+      function startDraw(){
+       //1:设置画布宽度和高度
+       var w = imgBg.width;
+       var h = imgBg.height;
+       c3.width = w;
+       c3.height = h;
+       //2:绘制背景图
+       var ctx = c3.getContext("2d");
+       ctx.drawImage(imgBg,0,0);
+       //3:绘制黑色胶片
+       ctx.beginPath();
+       ctx.arc(w/2,h/2,120,0,2*Math.PI);
+       ctx.fill();
+       //4:绘制胶片封面
+       var left = 120*Math.sin(Math.PI/4);
+       ctx.drawImage(disc,w/2-left,
+         h/2-left,2*left,2*left);
+       //5:绘制播放/按钮
+       ctx.drawImage(play,w/2-40,h-80,80,80);
+       //6:给按钮绑定点击事件
+       //如何为canvas上图形/图像绑定事件监听
+       //思路:为canvas绑定监听，计算事件发生点到按钮中心距离小半径
+       c3.onclick = function(e){
+         var ex = e.offsetX;//事件发生时坐标X
+         var ey = e.offsetY;//事件发生时坐标Y
+         //圆形按钮圆心坐标
+         var rx = w/2;
+         var ry= h-40;
+         //圆形按钮半径
+         var r = 40;
+         //判断:计算两点之间距,是否小于圆形半径
+         if(Math.sqrt(
+           (ex-rx)*(ex-rx)+(ey-ry)*(ey-ry))<=r){
+           console.log("播放按被点击了");
+         }
+       }
+      }
+
+    </script>
+</body>
+</html>

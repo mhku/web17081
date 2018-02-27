@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1">这是一个div</div>
+
+		<button onclick="button_click()">获取div</button>
+
+		<button onclick="getDivContent_Sim()">获取内容</button>
+
+		<button onclick="setDivContent_Sim()">设置内容</button>
+
+		<script>
+			function button_click(){
+				//1、获取页面上id为d1的元素
+				var elem=document.getElementById("d1");
+				//2、打印在控制台上
+				console.log(elem);
+			}
+
+			function getDivContent(){
+				//1、获取DOM对象
+				var div = document.getElementById("d1");
+				//2、获取 div 中的标记内容，并打印在控制台上
+				console.log(div.innerHTML);
+			}
+
+			function setDivContent(){
+				//1、获取DOM对象
+				var div = document.getElementById("d1");
+				//2、设置 div 中的标记内容为 ：我的第一个DOM操作
+				div.innerHTML = "<h1>我的第一个DOM操作</h1>";
+			}
+			
+			function getDivContent_Sim(){
+				console.log(document.getElementById("d1").innerHTML);	
+			}
+
+			function setDivContent_Sim(){
+				document.getElementById("d1").innerHTML = "<h1>简化版的赋值操作</h1>";
+			}
+		</script>
+	</body>
+</html>

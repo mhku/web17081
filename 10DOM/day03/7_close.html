@@ -1,0 +1,27 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>倒计时自动关闭/跳转页面</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+	<span id="msg">5秒钟后自动关闭</span><br>
+	<a href="javascript:clearInterval(timer)">留在本页</a>
+  <script>
+//	  function task(){ close(); }
+//		setTimeout(task,5000);
+		var msg=document.getElementById("msg");
+		function task(){
+			//获得msg中的开头的数字，转为整数保存在i中
+			var i=parseInt(msg.innerHTML);
+			if(i>1){
+				i-=1;//i-1
+				//将i拼上剩余字符，保存回msg的内容中
+				msg.innerHTML=i+"秒钟后自动关闭";
+			}else close();
+		}
+		var timer=setInterval(task,1000);
+  </script>
+</body>
+</html>

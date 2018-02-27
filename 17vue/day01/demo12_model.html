@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <p>{{userInput}}</p>
+    <input type="text" v-model="userInput"/>
+    <br/>
+    <!--复选框 注册的按钮-->
+    <input type="checkbox"
+           v-model="isUserAgree"/>
+            同意本站协议
+    <br/>
+    <button :disabled="!isUserAgree">注册</button>
+
+    <br/>
+    <input type="text" v-model.lazy="userAddr"/>
+    <h3>{{"用户地址是:"+userAddr}}</h3>
+
+    <input type="text" v-model.number="num1"/>
+    <input type="text" v-model.number="num2"/>
+    <button @click="sumAll">求和</button>
+
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      userInput:'hello',
+      isUserAgree:false,
+      userAddr:'',
+      num1:'',
+      num2:''
+    },
+    methods:{
+      sumAll:function () {
+        console.log(this.num1+this.num2);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

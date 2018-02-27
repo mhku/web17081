@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function printTriangle1(){
+				for(var line=1;line<=5;line++){
+					var msg="";
+					for(var star=1;star<=line;star++){
+						msg += "*";
+					}
+					console.log(msg);
+				}
+			}
+
+			function printTriangle2(){
+				for(var line=1;line<=5;line++){
+					var msg = "";
+					//1、追加 空格 的循环:从1开始，到5-line结束 
+					for(var sp=1;sp<=5-line;sp++){
+						msg +=" ";
+					}
+					//2、追加 * 的循环 : 从1开始，到line结束
+					for(var star=1;star<=line;star++){
+						msg += "*";
+					}
+					console.log(msg);
+				}
+			}
+
+			function printTriangle3(){
+				for(var line=1;line<=5;line++){
+					var msg = "";
+					//1、空格的循环
+					for(var sp=1;sp<=5-line;sp++){
+						msg += " ";
+					}
+					//2、*的循环
+					for(var star=1;star<=2*line-1;star++){
+						msg += "*";
+					}
+					console.log(msg);
+				}
+			}
+
+			function print99(){
+				for(var i=1;i<=9;i++){
+					var msg = "";
+					for(var j=1;j<=i;j++){
+						msg += (j+"*"+i+"="+(i*j)+"\t");
+					}
+					console.log(msg);
+				}
+			}
+		</script>
+		<button onclick="printTriangle1()">三角形1</button>
+		<button onclick="printTriangle2()">三角形2</button>
+		<button onclick="printTriangle3()">三角形3</button>
+		<button onclick="print99()">乘法表</button>
+	</body>
+</html>

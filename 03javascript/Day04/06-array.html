@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function testArray(){
+				//1、创建3个数组，分别保存姓名，年龄，性别
+				var names = ["王宝强","马金莲","宋喆"];
+				var ages = [32,31,38];
+				var genders = new Array("男","女","保密");
+
+				console.log(names);
+				console.log(ages);
+				console.log(genders);
+
+				//2、为数组元素赋值
+				names[1] = "马蓉";
+				console.log(names);
+				//3、为第四个元素(增加了一个元素)赋值为李文华
+				names[3] = "李文华";
+				console.log(names);
+				//4、为第7个元素赋值为范冰冰 (稀疏数组：中间有数据时空)
+				names[6] = "范冰冰";
+				console.log(names);
+				//5、获取names中的第4个元素并打印 
+				console.log(names[3]);
+				//6、获取names中的第5个元素并打印
+				console.log(names[4]);
+				//7、获取 names 数组的长度
+				var len = names.length;
+				console.log("names数组中共有"+len+"个元素");
+				//8、循环遍历 names 中的每一个元素 
+				for(var i=0;i<names.length;i++){
+					console.log("第"+(i+1)+"名:"+names[i]);
+				}
+			}
+		</script>
+		<button onclick="testArray()">打印数组</button>
+	</body>
+</html>

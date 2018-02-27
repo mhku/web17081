@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blue{background:#ddf;color:#33a}
+        .pink{background:#fdf;color:#a3a}
+        .dark{background:#333;color:#eee}
+    </style>
+</head>
+<body>
+     <h1>用户中心</h1>
+     <script>
+       //1:读取 localStorage
+       var my = localStorage.getItem("myStyle");
+       //2:立即应用
+       if(my){
+         document.body.className = my;
+       }
+       //如果localStorage数据发生
+       //立即触发事件onstorage
+       window.onstorage = function(){
+         var my = localStorage.getItem("myStyle");
+         document.body.className = my;
+       }
+     </script>
+</body>
+</html>
+
+
+
+

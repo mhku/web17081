@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 将输入的10进制数字转换为二进制
+			 */
+			function decode2Bin(){
+				var num = Number(prompt("输入一个数字:"));
+				//声明一个数组，用于保存每次%2的结果
+				var stack = [];
+				//通过一个循环计算%2的结果
+				while(num > 0){
+					//1、计算 num % 2 的结果
+					var m = num % 2;
+					//2、将结果存入到stack数组中
+					stack.push(m);
+					//3、将 num / 2 ,取整
+					num=parseInt(num / 2);
+				}
+				console.log(stack.reverse().join(""));
+			}
+		</script>
+		<button onclick="decode2Bin()">十进制转二进制</button>
+	</body>
+</html>

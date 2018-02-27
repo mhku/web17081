@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="loadInfo()">显示数据</button>
+		<table border="1" width="500">
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>书名</th>
+					<th>作者</th>
+					<th>描述</th>
+				</tr>
+			</thead>
+			<tbody id="content"></tbody>
+		</table>
+
+		<script src="common.js"></script>
+		<script>
+			var infos = [
+				["《西游记》","吴承恩","古代神话故事"],
+				["《三国演义》","罗贯中","古代神话故事"],
+				["《红楼梦》","曹雪芹","古代神话故事"],
+				["《水浒传》","施耐庵","古代神话故事"]
+			];
+			function loadInfo(){
+				//1、声明变量html，用于拼接<tr> <td>
+				var html = "";
+				//2、循环遍历infos,每循环一次，追加一对<tr>到 html 后面
+				for(var i=0;i<infos.length;i++){
+					//将infos中的每个元素赋值给book变量，book是一个数组
+					var book = infos[i];
+					html += "<tr>";
+					//将 i+1 拼成td ，追加到 html 的后面
+					html += "<td>"+(i+1)+"</td>";
+					//循环遍历book数组，每循环一次，追加一对td到 html 后面
+					for(var j=0;j<book.length;j++){
+						html += "<td>"+book[j]+"</td>";
+					}
+
+					html += "</tr>";
+				}
+				
+				$("content").innerHTML = html;
+				
+			}
+		</script>
+	</body>
+</html>

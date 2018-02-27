@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var pid="130102198312262151";
+			       //012345678901234567
+			var birth=//pid.slice(6,13+1);//19831226
+								pid.slice(6,-5+1);
+							//pid.slice(6,pid.length-5+1);
+							//pid.substring(6,pid.length-5+1)
+							//pid.substr(6,8)
+			         //slice
+			var gender=
+				//pid[pid.length-2]%2==1?"男":"女";
+				pid.charAt(pid.length-2)%2==1?"男":"女";
+			         //三目
+							 //条件?值1:值2
+							 //如果满足条件，就用值1
+							 //否则，就用值2
+			console.log(birth,gender);
+		</script>
+	</body>
+</html>

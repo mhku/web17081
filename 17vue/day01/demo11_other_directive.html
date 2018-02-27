@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <p>{{msg}}</p>
+    <button v-show="hasMore">加载更多</button>
+    <p v-show="!hasMore">没有更多数据可以加载了</p>
+
+    <div>{{myHeader}}</div>
+    <div v-html="myHeader"></div>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      hasMore:true,
+      myHeader:'<h1>it is a header</h1>'
+    }
+  })
+</script>
+
+</body>
+</html>

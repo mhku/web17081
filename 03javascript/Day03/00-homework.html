@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*1、定义一个接受两个数字的方法，返回两个数字的和*/
+			function calSum(num1,num2){
+				return num1 + num2;
+			}
+
+			function testCalSum(){
+				var result=calSum(15,18);
+				alert("两个数的和为:"+result);
+			}
+
+			/*2、定义一个可以接收三个数字的方法，方法体内返回三个数中的最大值*/
+			function getMax(n1,n2,n3){
+				//1、声明变量 max ，表示的是三个数中的最大值，并将n1，先赋值给max
+				var max = n1;
+				//2、将 n2 与 max 进行比较，如果n2 比 max大，则将 n2 赋值给 max
+				//n2>max && max=n2;
+				max = n2>max?n2:max;
+				//3、将 n3 与 max 进行比较，如果n3 比 max大，则将 n3 赋值给 max
+				n3>max && (max = n3);
+				
+				return max;
+			}
+
+			function testGetMax(){
+				var max = getMax(38,64,12);
+				alert("最大值为:"+max);
+			}
+
+			/*3、定义一个函数，接收三个数字，排序输出*/
+			function sortNum(a,b,c){
+				//将最小的数字赋值给a，将最大的数字赋值给c
+				//1、比较a与b的大小关系，如果a>b的话，则交换两个数字，则 a 中存放的就是 a和b中的最小值
+				a>b && (a^=b,b^=a,a^=b);
+				//2、比较b与c的大小关系，如果b>c的话，则交换两个数字，则 b 中存放的就是 b和c中的最小值 ， 则c中存放的是3个数字中的最大值
+				b>c && (b^=c,c^=b,b^=c);
+				//3、比较a与b的大小关系，如果a>b的话，则交换两个数字，则 a 中存放的就是 a和b中的最小值
+				a>b && (a^=b,b^=a,a^=b);
+
+				console.log(a,b,c);
+			}
+		</script>
+		<button onclick="testCalSum()">计算两个数字的和</button>
+		<button onclick="testGetMax()">获取最大值</button>
+		<button onclick="sortNum(9,73,6)">三个数字排序输出</button>
+	</body>
+</html>

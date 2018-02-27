@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .blue{background:#ddf;color:#33a}
+        .pink{background:#fdf;color:#a3a}
+        .dark{background:#333;color:#eee}
+    </style>
+</head>
+<body>
+<h1>首页</h1>
+<select id="list">
+   <option value="blue">蔚兰天空</option>
+   <option value="pink">芭比公主</option>
+   <option value="dark">暗黑主题</option>
+</select>
+<p>首页....</p>
+<script>
+    //1:获取下拉列表,绑定修改事件
+    list.onchange = function(){
+      //2:获取value值
+      var val = this.value;
+      //3:保存 localStorage
+      localStorage.setItem("myStyle",val);
+      //4:将value 值内容应用 class body
+      document.body.className = val;
+    };
+    //获取样式
+    var my = localStorage.getItem("myStyle");
+    if(my){
+      document.body.className = my;
+    }
+    //创建 02_local_usercener.html
+    //读以 localStorage.getItem("myStyle");
+    //应用
+</script>
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+1、显示
+	1、显示方式
+		1、什么是显示方式
+			决定了元素在网页中的表现形式(行内？块级？行内块？)
+		2、语法
+			属性：display
+			取值：
+				1、none
+					不显示元素 - 隐藏
+					特点：脱离文档流 - 不占据页面空间
+				2、block
+					让元素表现的与块级元素一致
+				3、inline
+					让元素表现的与行内元素一致
+					特点：
+						不允许修改尺寸
+						多个元素在一行
+						无法修改垂直外边距
+				4、inline-block
+					让元素表现的与行内块元素一致
+					特点：
+						允许修改尺寸
+						多个元素在一行显示
+				5、table
+					让元素表现的与表格一致
+					特点：
+						尺寸以内容为准
+						每个元素独占一行
+						允许修改尺寸
+		3、练习
+			1、创建02-display-exercise.html
+			2、页面中创建5个a标记，并写内容和href属性
+			3、通过内部样式表，为每个a标记设置尺寸为100*100
+			4、分别为以上a标记设置不同的display属性
+				none,block,inline,inline-block,table
+	2、显示效果
+		1、显示 / 隐藏属性
+			属性：visibility
+			取值：
+				1、visible : 默认值，元素可见
+				2、hidden : 元素不可见 - 隐藏
+			面试：
+				Q:display:none 和 visibility:hidden 区别
+					display:none 会脱离文档流，所以不占空间
+					visibility:hidden,不脱离文档流，占据空间
+		2、透明度
+			属性：opacity
+			取值：0.0(完全透明) ~ 1.0(完全不透明)
+			注意：
+				rgba 与 opacity 的区别
+		3、垂直方向对齐方式
+			属性：vertical-align
+			场合：
+				1、表格中使用
+					取值：top / middle / bottom
+				2、图片(img)中使用
+					作用：控制图片两边的文本的垂直对齐方式
+					取值：
+						1、top 
+						2、middle
+						3、bottom
+						4、baseline ：基线对齐,默认值
+					注意：
+						编写网页时，通常都会将所有图片的垂直对齐方式更改为除baseline以外的任何一个值
+						img{
+							vertical-align:bottom;
+						}
+	3、光标
+
+
+
+
+
+
+
+
+
+
+
+
+

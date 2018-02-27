@@ -1,0 +1,7 @@
+create database tedu_1;
+create database tedu_2;
+create database tedu_3;
+show databases;
+#drop database tedu_1;
+#drop database tedu_2;
+#drop database tedu_3;

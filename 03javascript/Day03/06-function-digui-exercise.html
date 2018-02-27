@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 计算 斐波那契数列中第n个位置的数字
+			 * 1、边界条件：n==1 || n==2 时，直接返回1
+			 * 2、否则 ：返回 f(n-1) + f(n-2)
+			 */
+			function f(n){
+				if(n == 1 || n == 2){
+					return 1;
+				}else{
+					return f(n-1)+f(n-2);
+				}
+			}
+
+			function testF(){
+				var result = f(100);
+				console.log(result);
+			}
+
+			testF();
+		</script>
+	</body>
+</html>

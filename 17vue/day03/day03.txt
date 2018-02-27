@@ -1,0 +1,58 @@
+Vue组件中计算属性和监听属性
+组件间通信
+
+（基本语法+组件间通信+router+http）
+
+一、Vue中常用属性
+	1、计算属性
+		①创建一个计算属性
+		new Vue({
+			computed:{
+				getNowCount:function(){
+					return **
+				}
+			}
+		})
+		②调用计算属性
+		<any>{{getNowCount}}</any>
+		③计算属性与普通的方法的区别
+			计算属性是有依赖缓存的，如果依赖的数据没有发生变化,即使调用了计算属性，也不会执行方法
+			而普通的方法就不同了，只要是调用，肯定会执行
+
+	2、监听属性
+		如果希望在用户进行表单操作时候，可以设置一个监听属性
+		①在表单元素中指定v-model
+		<input type='text' v-model="myValue"/>
+		②在input所属的组件中 指定一个watch属性
+		Vue.component('',{
+			watch:{
+				myValue:function(){
+					//当数据中的myValue发生变化时，将会自动的执行该方法
+				}
+			}
+		})
+
+二、Vue中组件间通信
+	一个基于Vue的项目，有可能会很多的组件，组件之间难免需要进行数据的传递，比如父组件 传数据 给子组件；子组件传数据给父组件等，需要用到组件之间的通信处理方式
+
+	1、props down
+		通过属性传值
+		①配置子组件的props
+			Vue.component('son',{
+			 props:['userName']
+			})
+		②父组件中调用子组件的时候，通过属性把值传递过去
+			Vue.component('father',{
+				data:function(){
+					return {
+						uName:'zhangsan'
+						}
+				}
+				template:'<son :userName='uName'></son>'
+			})
+
+	练习：实现一个登陆
+	创建的组件有3个：my-button/my-input/my-login
+
+
+	2、events up

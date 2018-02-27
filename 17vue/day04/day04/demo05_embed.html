@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+</div>
+<script>
+    var Cart=Vue.component("car-component",{
+        template:`
+            <div>
+                <h1>这是购物车</h1>
+                <router-link to="/order">到订单页面</router-link>
+            </div>
+        `
+    })
+    var OrderConfirm=Vue.component("order-component",{
+        template:`
+            <div>
+                <h1>这是订单确认页面</h1>
+                <button>第一步</button>
+                <button>第二步</button>
+            </div>
+        `
+    })
+
+    var Step1=Vue.component("step1",{
+        template:`
+            <div>
+                <h1>订单确认第一步</h1>
+                <button>第一步</button>
+                <button>第二步</button>
+            </div>
+        `
+    })
+    var Step2=Vue.component("step2",{
+        template:`
+            <div>
+                <h1>这是订单确认第二部</h1>
+                <button>第一步</button>
+                <button>第二步</button>
+            </div>
+        `
+    })
+    const myRoutes=[
+        {path:"",component:Cart},
+        {path:"/cart",component:Cart},
+        {path:"/order",component:OrderConfirm},
+    ]
+    const myRouter=new VueRouter({
+        router:myRoutes
+    })
+    new Vue({
+        el:"#app",
+        router:myRouter,
+        data:{
+            msg:"hello vue"
+        }
+    })
+</script>
+</body>
+</html>

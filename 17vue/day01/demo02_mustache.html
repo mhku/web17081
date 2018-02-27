@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<!--alt+f2 到浏览器中预览-->
+
+<div id="example">
+    <h2>{{car.brand+"型号是"+car.model}}</h2>
+</div>
+
+<!--放在这个地方，超出了Vue的管辖范围，不能识别语法-->
+<h3>{{car.price}}</h3>
+
+<script>
+    new Vue({
+      el:'#example',
+      data:{
+        car:{brand:'volvo',model:'xc60',price:30}
+      }
+    });
+</script>
+
+</body>
+</html>

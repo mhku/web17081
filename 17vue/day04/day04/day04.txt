@@ -1,0 +1,78 @@
+
+（基本语法+组件+）
+
+
+练习：
+	①先去创建各个组件
+	②实现添加功能
+	③实现删除功能
+	点击todoitem中的delete按钮时候，从todolist中删除指定下标的元素
+
+	todoitem（触发） --index-> todolist（绑定）
+	events up 绑定和触发 
+
+	组件间通信：
+		兄弟组件间通信 bus
+		props down
+		events up
+
+SPA(single page application)
+http(Vue如何实现与远程服务器端的交互)
+
+一、Vue中如何来实现一个SPA应用程序
+
+1、SPA的基础知识
+SPA：Gmail邮箱
+	在整个应用程序有一个完整的页面，这个完整的页面可以根据地址栏中url的不同，加载代码片段进来，从而显示给用户
+
+SPA的工作原理：
+	①解析地址栏中的页面地址和路由地址
+	②加载基础页面地址
+	③根据路由地址，从路由词典中找要加载的模板页面地址
+	④发起ajax请求，将加载来的模板页面 插入到 指定的容器中
+
+2、VueRouter
+	Vue中VueRouter是用来实现SPA
+
+	基础知识：
+		路由模块用来建立起url地址和模板页面的映射关系
+	
+	SPA：有容器 ，有组件 ，配置路由词典
+
+	2.1 通过VueRouter来实现一个SPA的基本步骤：
+		①引入对应的js文件 
+		script  src=js/vue-router.js
+		②指定容器
+		<router-view></router-view>
+		③创建业务需要用到的各个组件
+		④配置路由词典
+			//创建路由词典
+				const myRoutes = [
+					{
+						path:'/myLogin',
+						component:LoginComponent
+					},
+					{
+						path:'/myRegister',
+						component:RegisterComponent
+					}
+				]
+		
+			//配置路由模块中的路由词典
+				const myRouter = new VueRouter({
+					routes:myRoutes
+				})
+
+			//Vue的实例去使用配置过的路由模块
+					new Vue({
+						router:myRouter
+					})
+
+		
+
+
+
+	2.2 VueRouter实现路由导航的常见方式
+		①直接修改地址栏
+		②js
+			this.$router.push('路由地址')

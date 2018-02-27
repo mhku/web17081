@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+        svg{background:  #ddd}
+    </style>
+</head>
+<body>
+   <h3>two.js</h3>
+   <div id="box"></div>
+   <script src="js/two.js"></script>
+   <script>
+       //1:创建对象
+       var two = new Two({
+         width:800,
+         height:400,
+         types:Two.Types.svg
+       }).appendTo(box);
+       //3:在右侧绘制矩形
+       var c = two.makeCircle(200,200,50);
+       var r = two.makeRectangle(200,0,100,80);
+       //4:让旋转60度
+       //two.js中小组(group)
+       //本身不可见，可用于盛放多个其它的图形,
+       //默认原点(0,0)
+       var g = two.makeGroup(r,c);
+       g.translation.set(400,200); //平移小组原点
+       g.rotation = 60*Math.PI/180;
+       //结论:two.js 中所有旋转都是以自己为中心!
+       //two.js中旋转不会累加
+       two.update();
+
+   </script>
+</body>
+</html>
+
+
+

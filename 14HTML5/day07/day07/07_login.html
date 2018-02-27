@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>登录</h1>
+  <form>
+      用户名 <input type="text" id="uname"> <br>
+      密码 <input type="password" id="upwd"> <br>
+      <input type="button" value="登录" id="btn1">
+  </form>
+  <script>
+      //1:获取按钮绑定点击事件
+      btn1.onclick = function() {
+        //2:获取用户输入的用户名(命名冲突)
+        //window对象有一个属性 name
+        var uname1 = uname.value;
+        //3:保存  sessionStorage
+        sessionStorage.setItem("uname",uname1);
+        //4:3s后跳转 06_index.html
+        alert("登录成功!3s后自动跳转");
+        setTimeout(function(){
+          location.href = "06_index.html";
+        },3000);
+      }
+
+  </script>
+
+</body>
+</html>

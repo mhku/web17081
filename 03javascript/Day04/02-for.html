@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function jieCheng(){
+				var sum=1;
+				for(var i=1;i<=5;i++){
+					sum *= i;
+				}
+				console.log(sum);
+			}
+			
+			/**
+			 * 打印乘法表中的任意一行
+			 * 参数 line : 表示要打印的行数 
+			 */
+			function printResult(line){
+				/*
+					循环条件：从 1 开始 到 line 结束
+					循环操作：循环变量 * line = 循环变量 * line
+				*/
+				var print = "";
+				for(var i=1;i<=line;i++){
+					var msg = (i+"*"+line+"="+(i*line));
+					print += msg + "\t";
+				}
+				console.log(print);
+			}
+
+			function printSum(){
+				/*
+					循环条件：从1开始，到999结束，以2递增
+					循环操作：累加 1/循环条件变量 的和
+				*/
+				var sum=0;
+				for(var i=1;i<=999;i+=2){
+					sum += 1/i;
+				}
+				console.log(sum);
+			}
+			
+			printSum();
+		</script>
+	</body>
+</html>

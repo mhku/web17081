@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg图形创建--html5之后标准</title>
+    <style>
+        body{text-align: center}
+        svg{background: #ddd}
+    </style>
+</head>
+<body>
+   <svg width="500" height="400" id="s2">
+   </svg>
+  <script>
+     var xhr = new XMLHttpRequest();
+     xhr.onreadystatechange = function(){
+       if(xhr.readyState===4){
+         if(xhr.status===200){
+           var html = xhr.responseText;
+           var obj = JSON.parse(html);
+           //console.log(obj);//[{},{},{},{}]
+           for(var i=0;i<obj.length;i++){
+            var m = obj[i];
+            var rect = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "rect");
+            rect.setAttribute("width",50);
+            rect.setAttribute("height",m.value);
+            rect.setAttribute("x",100*i);
+            rect.setAttribute("y",400-m.value);
+            rect.setAttribute("fill",getColor());
+            s2.appendChild(rect);
+            //15:50--15:53 柱子填充色->随机产生
+           }
+         }
+       }
+     }
+     xhr.open("GET",
+       "http://127.0.0.1/html5/day04/salesdata.php"
+       ,true);
+     xhr.send(null);
+
+     //产生随机颜色  rgb(240,190,157)
+     function getColor(){
+       var r = Math.floor(Math.random()*256);
+       var g = Math.floor(Math.random()*256);
+       var b = Math.floor(Math.random()*256);
+       return `rgb(${r},${g},${b})`;
+     }
+  </script>
+</body>
+</html>

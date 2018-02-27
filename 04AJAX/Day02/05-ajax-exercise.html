@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="getMsg()">发送请求</button>
+		<div id="show"></div>
+		<script src="common.js"></script>
+		<script>
+			function getMsg(){
+				//1、创建 xhr
+				var xhr = createXhr();
+				//2、创建请求
+				xhr.open("get","05-response.php",true);
+				//3、设置回调函数
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var resText = xhr.responseText;
+						$("show").innerHTML="<h1>"+resText+"</h1>";
+					}
+				}
+				//4、发送请求
+				xhr.send(null);
+			}
+		</script>
+	</body>
+</html>

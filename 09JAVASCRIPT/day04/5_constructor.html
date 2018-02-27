@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    1、定义构造函数
+    function Student(sname,sage){
+        this.sname=sname;
+        this.sage=sage;
+        this.intr=function(){
+            console.log("Im "+this.sname,"Im "+this.sage);
+        }
+    }
+//    调用构造函数创建多个相同结构的对象
+    var lilei=new Student("li lei",11);
+    var hmm=new Student("han meimei",12);
+    console.dir(lilei);
+    console.dir(hmm);
+    lilei.intr();
+    lilei.sage++;
+    lilei.intr();
+    hmm.intr();
+    hmm.sage++;
+    hmm.intr();
+    function stu(uname,age){
+        this.uname=uname;
+        this.age=age;
+        this.intr=function(){
+            for(var i=0;i<100;i++){
+                console.log("T"+this.uname+i)
+            }
+        }
+    }
+    var bb=new stu("uhreai",11);
+    console.log(bb);
+</script>
+</body>
+</html>

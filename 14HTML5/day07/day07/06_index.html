@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #welcome{text-align: right}
+    </style>
+</head>
+<body>
+ <div id="welcome">
+     <a href="07_login.html">请登录</a>
+ </div>
+<h1>首页</h1>
+<script>
+    //1:判断当前 会话中是否存储用户名
+    var n = sessionStorage.getItem("uname");
+    if(n){
+      welcome.innerHTML = `
+        欢迎回来:${n} <a href="08_logout.html">退出登录</a>
+      `;
+    };
+</script>
+</body>
+</html>

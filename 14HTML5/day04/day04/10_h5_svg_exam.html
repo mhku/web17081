@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg图形创建--html5之后标准</title>
+    <style>
+        body{text-align: center}
+        svg{background: #ddd}
+    </style>
+</head>
+<body>
+   <svg width="500" height="400" id="s2">
+   </svg>
+  <script>
+    //random number 返回指定范围内随机数
+    function rn(min,max){
+      var n = Math.floor(Math.random()*(max-min)+min);
+      return n;
+    }
+    //random color 返回指定范围内随机颜色
+    function rc(min,max){
+      var r = rn(min,max);
+      var g = rn(min,max);
+      var b = rn(min,max);
+      return `rgb(${r},${g},${b})`;
+    }
+//    console.log(rn(50,100));
+//    console.log(rc(200,255));
+    //1:循环创建30个圆
+    //2:创建圆 r cx cy fill fill-opacity
+    for(var i=0;i<30;i++){
+      var c = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle");
+      c.setAttribute("r",rn(10,80));        //半径
+      c.setAttribute("cx",rn(0,500));       //圆心 cx
+      c.setAttribute("cy",rn(0,400));       //圆心 cy
+      c.setAttribute("fill",rc(0,255));     //随机填充色
+      c.setAttribute("fill-opacity",Math.random());       //随机透明度
+      s2.appendChild(c);
+      c.onclick = function(){
+        //解决问题一:在定时器中使用 this
+        //解决预留 this  ->c  that->c
+        var that = this;
+        //解决问题二:防止当前圆再次被点击
+        //将点击事件函数清空
+        that.onclick = null;
+        //启用定时器，让圆形变大，变淡
+        var timer = setInterval(function(){
+           //变大
+           var r =  that.getAttribute("r");
+           r *= 1.05;
+           that.setAttribute("r",r);
+           //变淡
+           var p = that.getAttribute("fill-opacity");
+           p *= 0.9;
+           that.setAttribute("fill-opacity",p);
+           //结束条件
+           if(p<0.001){
+             clearInterval(timer);//停止定时器
+             s2.removeChild(that);//删除当前圆
+           }//16:58--17;00
+
+        },50);
+      }
+    }
+
+
+  </script>
+</body>
+</html>

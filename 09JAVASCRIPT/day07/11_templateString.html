@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="emp">
+
+</div>
+<script>
+
+    var emp={
+        ename:"li lei",
+        level:"高级工程师",
+        base:10000,
+        bonus1:200000,
+        bonus2:30000
+    }
+    var html=` <h1>${emp.ename}</h1>
+    <h2>${emp.level}</h2>
+    <table>
+        <thead>
+        <tr>
+            <td>底薪</td>
+            <td>奖金</td>
+            <td>绩效</td>
+            <td>共计</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>￥${emp.base.toFixed(2)}</td>
+            <td>￥${emp.bonus1.toFixed(2)}</td>
+            <td>￥${emp.bonus2.toFixed(2)}</td>
+            <td>￥${emp.base+emp.bonus1+emp.bonus2.toFixed(2)}</td>
+        </tr>
+        </tbody>
+    </table>`;
+    document.getElementById("emp").innerHTML=html;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="province" onchange="sel_change()">
+			<option value="1">北京市</option>
+			<option value="2">黑龙江</option>
+			<option value="3">吉林</option>
+			<option value="4">辽宁</option>
+		</select>
+		<script src="common.js"></script>
+		<script>
+			function sel_change(){
+				//1、获取 province的value值，并以弹框的方式输出
+				alert($("province").value);
+			}
+		</script>
+	</body>
+</html>

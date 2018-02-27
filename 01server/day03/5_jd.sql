@@ -1,0 +1,30 @@
+/*
+重新创建数据库jd，
+创建部门信息表(dept)，插入3个部门；
+再创建员工信息表，插入5个员工；
+测试外键约束
+*/
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS jd;
+CREATE DATABASE jd CHARSET=UTF8;
+USE jd;
+
+CREATE TABLE dept(
+  did INT PRIMARY KEY,
+  dname VARCHAR(32)
+);
+INSERT INTO dept VALUES(10, '研发部');
+INSERT INTO dept VALUES(20, '市场部');
+INSERT INTO dept VALUES(30, '市场部');
+
+CREATE TABLE emp(
+  eid INT PRIMARY KEY,
+  ename VARCHAR(8),
+  deptId INT,
+  FOREIGN  KEY(deptId)  REFERENCES  dept(did)
+);
+INSERT INTO emp VALUES(101, 'TOM', 20);
+INSERT INTO emp VALUES(102, 'MARY', 20);
+INSERT INTO emp VALUES(103, 'KING', 30);
+INSERT INTO emp VALUES(104, 'SCOTT', NULL);
+#INSERT INTO emp VALUES(105, 'TIGER', 50);  #插入失败！！

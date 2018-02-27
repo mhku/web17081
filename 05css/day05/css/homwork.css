@@ -1,0 +1,58 @@
+div.main{
+    width: 960px;
+    margin: 0 auto;
+}
+#banner img{
+    width: 960px;
+    height: 384px;
+    overflow: hidden;
+    /*相对定位：配合a.ck-slide做绝对定位*/
+    position: relative;
+}
+#banner a.ck-slide{
+    /*绝对定位*/
+    position: absolute;
+    width: 35px;
+    height: 70px;
+    left: 0px;
+    top: 157px;
+    background:#000000;
+    border-radius: 3px;
+    opacity: 0.1;
+}
+#banner a.ck-slide:hover{
+    /*透明度*/
+    opacity: 0.3;
+}
+#banner a.ck-left {
+    background: url("../img/index/arrow-left.png") no-repeat center center;
+    left: 5px;
+}
+#banner a.ck-right{
+    background: url("../img/index/arrow-right.png") no-repeat center center;
+    right: 5px;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#banner ul.indicators{
+    /*绝对定位 位置偏移*/
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+#banner ul.indicators li{
+    /*宽度，高度，背景颜色 边框倒角*/
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border-radius: 50%;
+    float: left;
+    margin-right: 5px;
+}
+#banner ul.indicators li:hover{
+    cursor: pointer;
+    background: #0AA1ed;
+}

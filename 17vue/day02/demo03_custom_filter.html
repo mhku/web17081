@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <h1>{{nowPrice | myCurrency}}</h1>
+    <p>{{msg | myTextTransform(0,3)}}</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      nowPrice:1000
+    },
+    filters:{
+      myCurrency:function (value) {
+        //过滤器的本质 是就是一个有参数 有返回值的方法
+        return '$'+value;
+      },
+      myTextTransform:function (value,arg1,arg2) {
+        console.log(arg1,arg2);
+        if(arg1 == 1) {
+          return value.toUpperCase();
+        }
+        else{
+          return value.toLowerCase();
+        }
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

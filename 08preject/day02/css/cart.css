@@ -1,0 +1,30 @@
+div.title{
+    display: flex;
+    justify-content: space-between;
+}
+div.title>b{
+    font: 18px "Microsoft Yahei";
+    color: #333333;
+    font-weight: bold;
+}
+div.title span{
+    font-size: 16px;
+    color: #0AA1ed;
+    font-weight: bold;
+}
+div.content-box>div.top{
+    border-top: 1px solid #cccccc;
+    height: 36px;
+    line-height: 36px;
+    background:linear-gradient(to bottom,#f4f3f4,#e7e7e6);
+    box-shadow: 3px 3px 6px #ccc;
+    margin: 10px 0px;
+    color: #808080;
+    text-align: center;
+    display: flex;
+}
+div.check-top{  width: 62px;  }
+div.product-top{width: 370px}
+div.price-top{width: 142px}
+div.num-top{width: 120px}
+div.oper-top{width: 116px}

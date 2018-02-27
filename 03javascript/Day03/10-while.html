@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function print100(){
+				var i = 1;//从 1 开始
+				while(i <= 100){
+					console.log(i);
+					//更新循环变量
+					i++;
+				}
+			}
+			/*计算1-100之间所有数字的和*/
+			function calSum(){
+				var sum = 0;//用于累加 1-100 所有数的和
+				var i = 1;
+				while(i <= 100){
+					sum += i;
+					//更新循环变量
+					i++;
+				}
+				console.log(sum);
+			}
+			
+			/*计算1-100之间所有偶数的和*/
+			function calSum1(){
+				/*方式1 : 从2开始，到100结束，以 2 递增 */
+				/*var sum = 0;
+				var i = 2;
+				while(i <= 100){
+					sum += i;
+					i += 2;
+				}
+				console.log(sum);*/
+
+				/*方式2 : 从1开始，到100结束，是偶数再累加 */
+				/*var sum = 0;
+				var i = 1;
+				while(i <= 100){
+					if(i % 2 == 0){
+						sum += i;
+					}
+					i++;
+				}
+				console.log(sum);*/
+
+				/*方式3:使用continue完成操作*/
+				var sum = 0;
+				var i = 1;
+				while(i <= 100){
+					if(i % 2 == 1){
+						i++;
+						continue;
+					}
+					sum += i;
+					i++;
+				}
+				console.log(sum);
+
+			}
+			/**
+			 * 循环从弹框中录入数据并打印输出，直到输入 exit 为止 
+			 */
+			function printMsg(){
+				while(true){
+					//1、录入数据
+					var msg = prompt("请输入一段数据:");
+					//2、判断 msg 是否为 exit，如果是 exit ，则退出循环，否则 打印输出 msg 的值
+					if(msg == "exit"){
+						break;
+					}else{
+						console.log(msg);
+					}
+				}
+			}
+
+			printMsg();
+		</script>
+	</body>
+</html>

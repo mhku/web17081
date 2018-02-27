@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function showURI(){
+				var kw = prompt("请输入查询关键字：");
+				var url = "https://www.baidu.com/s?wd="+kw;
+				//使用encodeURI 函数，将url中的字符编译成符合URI规范的字符
+				url = encodeURI(url);
+				console.log(url);
+			}
+
+			function testEval(){
+				var input=prompt("请输入一段JS代码!");
+				eval(input);
+			}
+		</script>
+		<button onclick="showURI()">showURI()</button>
+		<button onclick="testEval()">执行eval</button>
+
+	</body>
+</html>

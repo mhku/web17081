@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <test-component></test-component>
+    <p>{{100 | myCurrency}}</p>
+</div>
+
+<script>
+
+  //创建一个自定义的指令,而且会将传递来的参数设置为
+  //调用指令的元素的背景色
+  Vue.directive('changeBgColor',{
+    bind:function (el,bindings) {
+      el.style.backgroundColor = bindings.value;
+    }
+  });
+
+  //创建一个自定义过滤器的方式
+  Vue.filter('myCurrency',function(value){
+    return '￥'+value;
+  });
+
+
+  Vue.component('test-component',{
+    template:`
+    <div>
+        <h1 v-change-bg-color="'#ff0000'">Hello</h1>
+        <h2>VueJS</h2>
+        <h3>{{30 | myCurrency}}</h3>
+    </div>
+    `
+  })
+
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS'
+    }
+  })
+</script>
+
+</body>
+</html>

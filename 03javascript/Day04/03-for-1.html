@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function isSu(){
+				var num = Number(prompt("请输入一个数字:"));
+				var su = true;//保存num是否为素数的结果，默认为真，即默认为素数
+				/*
+					循环条件：从2开始，到num-1为止
+					循环操作：判断 num 是否能被以上的数字整除，整除了，就不是素数
+				*/
+				for(var i=2;i<num;i++){
+					if(num % i == 0){
+						su = false;
+						break;
+					}
+				}
+				//根据 su 的结果给出提示
+				if(su){
+					alert("是素数");
+				}else{
+					alert("不是素数");
+				}
+			}
+			
+			/**
+			 * 打印 菲波那切数列的前10个数字
+			 */
+			function printFib(){
+				var n1 = 1,n2 = 1;
+				console.log(n1,n2);
+				for(var i=1;i<=50;i++){
+					n1 = n1 + n2;
+					n2 = n1 + n2;
+					console.log(n1,n2);
+				}
+			}
+			
+			/**
+			 * 计算菲波那切数列上的某个位置的数字
+			 */
+			function printFib1(n){
+				if(n == 1 || n == 2){
+					return 1;
+				}else{
+					var n1=1,n2=1,num;
+					for(var i=1;i<=n-2;i++){
+						num = n1 + n2;
+						n1 = n2;
+						n2 = num;
+					}
+					return num;
+				}
+			}
+
+			function testFib(){
+				console.log(printFib1(100));
+			}
+
+			testFib();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,188 @@
+一、VueJS的概述
+
+GUI： graphical user interface 图形化用户界面
+CLI： command line interface 命令行交互界面
+
+做用户界面的框架或者库，并不一定非得是像bootStrap有着丰富的样式类，VueJS是通过组件来构造ui(user interface)的。
+
+what？
+	VueJS是一个只关注视图层的渐进式的js框架。
+	Vue就像是React和AngularJS结婚时生的小宝宝，继承了React和Angular的一些优点
+
+	Vue.js 不支持 IE8 及其以下版本
+
+	所谓的渐进式，指的是Vue可以实现一些非常基础的操作，还可以实现一个大型的商业项目，从简单的功能，逐渐到复杂的功能，Vue都能胜任
+
+why?
+	①是国人开发的，非常优秀的框架
+	②非常方便的中文手册
+	③Vue的内部实现让编码、运行更具有效率
+
+when?
+	实现UI层，也可以实现整个项目
+
+how?
+	方式1：
+		直接在工程中 引入vue.js文件
+	方式2：CLI
+		//全局安装 vue-cli
+		 npm install --global vue-cli
+		//创建一个基于 webpack 模板的新项目
+		 vue init webpack my-project
+	  //安装依赖，走你
+		 cd my-project
+		 npm install
+		 npm run dev
+		
+
+扩展：
+	SPA(single page application) 单页面应用程序，在一个完整的工程中 只有一个完整的页面，其余的都是一些代码片段。
+	
+
+二、VueJS的使用
+
+1、双花括号
+
+双花括号，叫做mustache语法（胡子语法）、interpolation语法（插值表达式）
+
+基本语法：
+<any>{{expression}}</any>
+表达式是由变量和运算符（比如算术、比较运算符、逻辑运算。。。）构成。
+
+作用：执行表达式，并将表达式的结果输出到当前元素的innerHTML中
+
+
+练习：
+	新建一个demo03_lianxi.html,去通过vue的语法来实现，直接在html中执行逻辑运算、三目运算，并将结果分别显示在h2\h3
+
+
+2、选择功能（判断功能）
+
+写代码有3种基本结构，分别是顺序结构、选择结构、循环结构
+
+语法:
+<any v-if="expression"></any>
+作用：
+根据表达式执行的结果的真、假来决定是否要将当前元素挂载到DOM
+
+
+多重判断：
+		<h2 v-if="rightAnswer == 'A'">A</h2>
+    <h2 v-else-if="rightAnswer == 'B'">B</h2>
+    <h2 v-else-if="rightAnswer == 'C'">C</h2>
+    <h2 v-else>D</h2>
+
+		if(rightAnswer == 'A')
+		{		
+		}
+		else if(rightAnswer == 'B'){}
+		else if(rightAnswer == 'C'){}
+		else{}
+
+
+3、循环指令
+
+语法1：
+<any v-for="tmp in list"></any>
+语法2：
+<any v-for="(value,index) in list"></any>
+语法3：用在遍历对象时候，需要知道是第几个属性
+<any v-for="(value,key,index) in list"></any>
+
+作用：根据集合中元素的个数 创建多个标签；让html扩展了循环的功能
+
+综合练习：
+在Vue中定义一个布尔类型的数据 isDataReady（初始化为false）,一个数组 myList(初始化一个空的数组)
+
+在Vue的实例创建完毕，2s之后，将isDataReady修改为true，并向数组中插入3条随机的数据。
+
+将myList中的数据 显示在ul中--》v-for
+根据isDataReady来决定h2标签中的内容(值为false，显示正在加载数据，值为true，从DOM中移除调用)--》v-if
+
+
+数据绑定到视图：
+	可以使用{{}}、指令，将数据绑定到视图，那么当数据发生变化的时候，视图会自动的更新。
+
+思维模式1：js/jQuery DOM驱动的开发方式
+
+思维模式2：数据驱动 ①简单 ②解耦（view和data）
+
+扩展：
+		1、高内聚低耦合
+			耦合度：藕断丝连，不同的组件或者模块之间的关系，将降低耦合度的过程称之为解耦
+			聚合度：一个组件内部之间的关系
+		2、API
+			application interface 接口文档
+
+4、常用指令
+
+学到的指令：
+v-if v-else-if v-else v-for v-on
+
+	4.1 事件绑定
+	<any v-on:eventName="事件处理函数"></any>
+	举例:
+	<button v-on:click="handleClick"></button>
+
+	简写：
+ 	<any v-on:eventName="事件处理函数"></any>		
+	<any @eventName="事件处理函数"></any>
+	支持修饰符：
+	<form @submit.prevent="submitOrder"></form>
+
+	4.2 属性绑定
+	将变量中的值 绑定到 特定的属性上边
+	语法：
+		<any v-bind:attr="expression"></any>
+	简写方式：
+		<any :attr="expression"></any>	
+	举例：
+		<img v-bind:src="imgUrl"/>
+		<a :href="linkUrl"></a>
+
+		<any v-bind:class="{myRed:expression}"></any>
+		根据表达式执行的结果的真假 来决定是否要将myRed的样式类 添加到该元素上
+
+		<any v-bind:style="{backgroundColor:myColor}"></any>
+
+	4.3 v-show v-html
+	<any v-show="expression"/> 根据表达式结果的真假来决定是否要显示
+	<any v-html="expression"/> 根据表达式中字符串所对应的标签构成的代码片段 直接替换当前元素的innerHTML
+
+	4.4 v-model
+	双向数据绑定:
+		方向1：将数据 绑定 到视图
+		方向2：将视图中用户操作的结果 绑定 到数据
+		（多数情况下 都是指的表单的操作input/select/textarea/...）
+
+		<formElement v-model="isUserAgree"/>
+		实现一个双向数据绑定
+
+综合练习：
+	实现一个简单的分页功能
+	demo13_lianxi.html
+
+	创建一个Vue的实例，初始化一个数组[1,2,3,4,5],
+	将数组显示如下效果：
+
+	上一页按钮 1 2 3 4 5 下一页按钮
+
+	功能如下：
+	高亮：蓝色的背景色
+	①默认第1页高亮显示
+	②点击上一页或者下一页 要求对应的页码高亮显示，如果已经到了边界值，禁用对应的翻页按钮
+	③点击某一页，该页码高亮显示
+	提示：
+	需要有个变量来记录当前选中的第几页
+	v-for v-bind v-on {{}}
+
+
+
+
+
+
+
+
+
+
+

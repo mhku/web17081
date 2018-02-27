@@ -1,0 +1,218 @@
+自定义指令
+自定义过滤器
+组件的创建和使用
+复合组件的基础知识
+
+一、自定义指令
+
+	内置指令：
+	选择 v-if/v-else-if/v-else/
+	循环v-for/
+	绑定 v-on/v-bind/v-model
+	显示隐藏v-show
+	更新HTML v-html
+
+	自定义指令？
+	内置的指令在很多时候 比较偏向于一些工具性的指令，比较通用一点；但是如果一旦需要和具体的业务相关，有可能就无法满足需求，就得学会如何自定义指令
+
+	1、自定义指令的创建
+		new Vue({
+			directives:{
+				change:{
+					bind:function(){
+						//当指令成功调用后 会执行的一个方法
+					}
+				}
+			
+			}
+		})
+	2、自定义指令的使用
+	<any v-change></any>
+
+	demo:当指令被调用时候，想要修改调用指令的元素 中的innerHTML为 hello world
+
+	3、自定义指令的进阶知识
+	自定义指令的方法：
+		bind:首次绑定
+		update:当通过指令传递的参数有变化时候
+		unbind：解除绑定
+
+	方法是有参数的：
+		el:调用指令的元素
+		bindings:是一个对象，rawName/value/oldValue
+
+	规范：指令的命名建议遵循小驼峰式的命名方式，指令在调用时通过烤串式写法（要记得前面加上v-）
+
+
+	练习：
+		创建一个demo02_lianxi.html
+		要求通过Vue去创建一个自定义指令 用来修改背景色为所传递的参数
+
+二、过滤器
+	过滤器：实现数据的筛选、过滤、格式化
+	在VueJS的1.*都是有内置的过滤器的，但是2.0之后只保留了一个自定义过滤器的方式。
+
+	1、过滤器的创建：
+		
+		过滤器的本质：是一个有参数，有返回值的方法
+
+		new Vue({
+			filters:{
+				//value是通过管道传递给过滤器的数据
+				customFilter:function(value){
+					return 处理后的结果
+				}
+			}
+		})
+
+	2、过滤器的使用：
+		<any>{{ expression | customFilter}}</any>
+	
+	3、过滤器中如何实现参数的传递和接收
+		接收:
+			new Vue({
+			filters:{
+				//value是通过管道传递给过滤器的数据
+				customFilter:function(value,arg1,arg2){
+					return 处理后的结果
+				}
+			}
+		})
+		传递：
+			<any>{{ expression | customFilter(arg1,arg2)}}</any>
+		
+	扩展：
+		1、过滤器支持多重过滤
+			<any>{{expression | filter1 | filter2}}</any>
+		2、一个优秀的开源项目
+			https://github.com/wy-ei/vue-filter
+
+	练习：
+	创建一个demo05_lianxi.html
+	要求通过vue创建一个过滤器，用来实现性别的转化
+	1 男 boy
+	0 女 girl
+
+	{{ 1 | sexChange(true)}} -->男
+	{{ 1 | sexChange(false)}} -->boy
+
+三、组件
+	让webStorm支持es6的高亮显示：
+	file-->settings --> languages & framework --> javaScript -->ecma6
+
+	当掌握了Vue中的基础语法（双花括号、指令、过滤器），具备了写项目的基础技能，如果项目中需要反复用到一些内容，可以使用组件来完成内容的封装和复用
+
+	1、组件：可被反复使用的，带有特定功能的视图
+
+	可以将基于组件化的开发方式，理解为拼积木，每一个组件都是一个小积木，拼在一样构成整个应用程序
+
+	2、组件创建和使用
+		全局组件：
+			2.1 创建
+				Vue.component('my-component',{
+				 template:'<h1>hello</h1>'
+				})
+			2.2 调用
+				直接将组件的名称作为普通的html标签一样去使用
+				<my-component></my-component>
+		局部组件：
+			2.1 创建
+				new Vue({
+					components:{
+						'my-component':{
+							template:'<h1>it is a header</h1>'
+						}
+					}
+				})
+			2.2 使用
+				<my-component></my-component>
+
+	注意事项：
+		1、组件不能直接返回多个要渲染的元素
+		将要渲染的元素放在同一个容器中，比如div
+		2、组件允许嵌套另外一个组件，换句话说，就是允许在一个组件中 调用另外一个组件，比如：
+		<my-main>
+			template:`<div>
+			<my-header></my-header>
+			<my-content></my-content>
+			<my-footer></my-footer>
+			</div>`
+		3、全局组件和局部组件的区别
+		通过Vue.component创建的组件是全局组件，它可以直接在任何一个组件或者模板内容中去使用
+		通过new Vue({components:{}})创建组件的组件是局部组件，它只能直接用在父模板中
+		4、提到组件，想到封装和重用，其次想到组件树（帮助理清楚一个应用程序的组件的基本架构）
+
+		练习：组件的创建和使用
+		
+		demo09_lianxi.html
+		创建全局组件的方式来完成一个登录页面：
+			my-login
+				my-login-button
+				my-register-button
+				my-username-input
+				my-userpwd-input
+
+	3、扩展
+	Vue.directive('myDirective',{
+		bind:function(){},
+		update:function(){},
+		unbind:function(){}
+	})
+	Vue.filter('myFilter',function(value){
+		return '处理后的结果'
+	})
+
+	创建组件的其它方式：
+		①指定一个script标签，并指定type='text/x-template',并指定一个id="myTemplate"
+		②在script标签中，指定模板内容
+		③在组件指定模板内容，可以直接：
+		 Vue.component('my-component',{
+			template:'#myTemplate'
+		 })
+	
+		
+四、组件的生命周期
+	
+	分为4个阶段：
+	create / mount / update /destroy
+	
+	将这个生命周期中的方法 称之为钩子函数。
+
+	create:
+		初始化数据，准备工作
+		beforeCreate
+		created
+
+	mount:
+		和挂载到DOM树相关
+		beforeMount
+		mounted
+
+	update:
+		当数据发生变化，可以根据业务逻辑实施一些处理
+		beforeUpdate
+		updated
+	
+	destroy:
+		清理工作
+		beforeDestroy
+		destroyed
+	
+	
+
+
+	知识点总结：
+		自定义指令
+		自定义过滤器
+		组件的创建和使用
+		组件的生命周期（create/mount/update/destroy）
+
+	每日一练：
+
+		创建一个demo13.html，
+		在该文件中，创建一个全局组件，在全局组件中渲染一个h1的标签
+		要求：在组件挂载完毕之后，启动一个定时器，修改数据，这个数据可以改变h1标签的透明度（0~1  0~1）
+
+		①组件创建和使用
+		②生命周期的钩子函数
+		③v-bind:style="{opacity:opacityValue}"

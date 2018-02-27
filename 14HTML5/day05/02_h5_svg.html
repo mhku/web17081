@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+        svg{background: #ddd}
+    </style>
+</head>
+<body>
+   <svg id="s2" width="500" height="400">
+    <!--定义渐变对象   -->
+    <defs>
+<linearGradient id="g3" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%" stop-color="red"></stop>
+   <stop offset="100%" stop-color="#fff"></stop>
+</linearGradient>
+<linearGradient id="g4" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#fff"></stop>
+    <stop offset="100%" stop-color="green"></stop>
+</linearGradient>
+<linearGradient id="g5" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="blue"></stop>
+    <stop offset="100%" stop-color="#fff"></stop>
+</linearGradient>
+    </defs>
+
+<rect width="50" height="100" x="100" y="50" fill="url(#g3)"></rect>
+<rect width="50" height="100" x="200" y="50" fill="url(#g4)"></rect>
+<rect width="50" height="100" x="300" y="50" fill="url(#g5)"></rect>
+
+   </svg>
+</body>
+</html>
+
+
+

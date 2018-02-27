@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<div id="nav">
+
+</div>
+
+
+<body>
+/*
+    冒泡排序
+    排序算法之一，将一组数字进行排序，小的数字向前排，大的向后排
+    [23,9,78,6,45]
+    两两比较，小的靠前
+    特点：
+    1、n个数字，则比较n-1次(外层循环)
+    for(var i=1;i<)
+    2、轮数增加，比较次数 减少
+*/
+<script>
+    function bubb(){
+        var arr=[23,9,78,6,45];
+        for(var i=1;i<arr.length;i++){
+            for(j=0;j<arr.length-i;j++){
+                if(arr[j]>arr[j+1]){
+                    arr[j]^=arr[j+1];
+                    arr[j+1]^=arr[j];
+                    arr[]=[]
+                }
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var code="E6aD";
+			do{//循环: while  do while  for
+			//请用户输入验证码保存在input中(prompt)
+				var input=prompt("输入验证码:("+code+")");
+			//如果input不等于code
+				if(input.toLowerCase()!=code.toLowerCase())
+					alert("验证码错误，请重新输入!");
+				else//否则
+					break;//退出循环(break)
+			}while(true);
+			document.write("验证通过！")//提示验证通过
+		</script>
+	</body>
+</html>

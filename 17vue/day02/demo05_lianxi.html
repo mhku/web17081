@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <h1>{{userSex | sexChange(true)}}</h1>
+</div>
+
+<script>
+  new Vue({
+    el: '#example',
+    data: {
+      msg: 'Hello VueJS',
+      userSex:0,
+      isShowChinese:false
+    },
+    filters:{
+      sexChange:function (value,isShowCh) {
+        //过滤器需要的参数有1个，是一个布尔类型的值，可以
+        //根据该数据决定返回中文、英文数据
+        if(value == 1){
+          if(isShowCh){
+            return '男'
+          }
+          else{
+            return 'boy'
+          }
+        }else if(value == 0){
+          if(isShowCh){
+            return '女'
+          }
+          else{
+            return 'girl'
+          }
+        }
+
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

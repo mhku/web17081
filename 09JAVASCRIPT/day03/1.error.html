@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+     num=prompt("输入一个数字");
+    var d=prompt("输入小数位数");
+    if(d>=0&&d<=20) {
+        var result = parseFloat(num).toFixed(d);
+        document.write(result);
+    }else{
+        alert("小数位数必须在0--20之间");
+        console.log("小数位数必须在0-20之间");
+    }
+    document.write("<br>程序继续运行");
+</script>
+</body>
+</html>

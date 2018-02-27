@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function printNames(){
+				//声明一个空数组保存录入的姓名
+				var names = [];
+				while(true){
+					//1、循环录入数据
+					var input = prompt("请输入姓名：");
+					//2、判断是否为 exit，如果是，则break
+					if(input == "exit"){
+						break;
+					}
+					//3、将录入的数据保存进names
+					names[names.length]=input;
+				}
+				//打印names中的数据
+				console.log(names);
+			}
+			
+			/**
+			 * 查找数组中的最大值
+			 */
+			function findMax(){
+				//1、声明一个整数数组
+				var nums = [78,62,1390,752,3,-9,65,1];
+				//2、声明一个变量max，用于保存数组中的最大值，默认将数组中的第一个元素赋值给max
+				var max = nums[0];
+				//3、从nums的第二个元素开始，到最后一个元素结束，依次与max进行比较，比max大的话，则将数据赋值给max
+				for(var i=1;i<nums.length;i++){
+					if(nums[i] > max){
+						max = nums[i];
+					}
+				}
+				//4、打印输出max的值
+				console.log("该数组中最大值为:"+max);
+			}
+
+			/**
+			 * 查找指定数据在数组中的下标位置
+			 */
+			function findIndex(){
+				var names = ["孙悟空","猪悟能","沙悟净","李文华","孙悟空"];
+				var input = prompt("请输入要找找的信息:");
+				//循环遍历names数组中的每一个元素，与input进行比较，如果相等则找到。比较完成之后，没有相等的，则不存在
+				// index ：用于保存查找到的数据的下标，默认为-1
+				var index = -1;
+				for(var i=0;i<names.length;i++){
+					if(names[i] == input){
+						index = i;
+					}
+				}
+				if(index == -1){
+					alert("对不起，您输入的数据不存在!");
+				}else{
+					alert("您要查找的数据的下标为:"+index);
+				}
+			}
+
+			
+			/**
+			 * 查找指定数据在数组中的下标位置们
+			 */
+			function findIndexes(){
+				var names = ["孙悟空","猪悟能","沙悟净","李文华","孙悟空"];
+				var input = prompt("请输入要找找的信息:");
+
+				//声明一个空数组，用于保存查找到的数据的索引
+				var indexes = [];
+				for(var i=0;i<names.length;i++){
+					if(names[i] == input){
+						indexes[indexes.length]=i;
+					}
+				}
+				//根据indexes给出提示
+				if(indexes.length == 0){
+					alert("您要查找的数据不存在!");
+				}else{
+					alert(indexes);
+				}
+			}
+		</script>
+		<button onclick="printNames()">录入员工姓名</button>
+		<button onclick="findMax()">查找最大值</button>
+		<button onclick="findIndex()">查找指定下标</button>
+		<button onclick="findIndexes()">查找指定下标</button>
+	</body>
+</html>

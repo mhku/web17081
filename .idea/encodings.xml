@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/05css/day05/css/homwork.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/08preject/day02/css/cart.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day04/1.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day08/ajax.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day08/js/ajax.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/data/routes/cart/clearCart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/data/routes/products/getProductById.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/js/ajax.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/js/header.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/js/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/js/login.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/js/products_details.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09JAVASCRIPT/day09/js/register.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day01/js/2.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day01/js/3.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day02/js/1.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day02/js/2.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day02/js/3.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day02/js/4.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10DOM/day02/js/5.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day02/14_app_fs.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day02/16_app_fs.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day02/21_app_fs.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day02/22_http.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day03/03_mysql.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day03/04_mysql.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day04/02_app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day04/04_app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day04/05_app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day04/06_book.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day04/dangdang.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/16node/day06/01_app.js" charset="UTF-8" />
+  </component>
+</project>

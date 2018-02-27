@@ -1,0 +1,216 @@
+CSS3 Core (CSS3 核心)
+1、复杂选择器
+	1、兄弟选择器
+		兄弟元素：具备相同父元素的平级元素称之为兄弟元素
+		<div>
+			<p id="p1">我是p1</p>
+			<p id="p2">我是p2</p>
+			<p id="p3">我是p3</p>
+		</div>
+		注意：兄弟选择器，只能向后找，不能向前找
+
+		1、相邻兄弟选择器
+			作用：获取紧紧挨在某元素后的兄弟元素
+			语法：选择器1+选择器2{ }
+				#p1+#p2{}
+				#p1+p{}
+				p+p{color:red;}
+		2、通用兄弟选择器
+			作用：获取某元素后所有满足条件的兄弟元素
+			语法：选择器1~选择器2{ }
+			ex:
+				#p1~p{ color:red; }
+			练习：
+				<h3>静夜思</h3>
+				<div>窗前明月光</div>
+				<div>疑是地上霜</div>
+				<div>举头望明月</div>
+				<div>低头思故乡</div>
+			通过兄弟选择器设置如下操作：
+				1、h3 与 div 之间 有30px的外边距
+				2、从第2个div开始，每个div都有10px的上外边距
+	2、属性选择器
+		<input id="uname" name="uname" type="text" value="" placeholder="">
+		1、作用
+			允许通过元素所附带的属性及其值来匹配页面元素
+		2、语法
+			1、基本语法 
+				[attr]
+				作用：匹配页面中所有附带 attr 属性的元素
+				ex:
+					1、[id]
+					2、[class] : 匹配页面中所有附带class属性的元素
+			2、elem[attr]
+				elem : 表示任意元素
+				attr : 表示任意属性
+				作用：匹配页面中所有附带attr属性的elem元素
+				ex:
+					1、匹配页面中所有附带id属性的div元素
+						div[id]
+					2、匹配页面中所有附带type属性的input元素
+						input[type]
+					3、匹配页面中所有附带placeholder属性并且class为important的元素
+						.important[placeholder]{}
+			3、[attr1][attr2]... ...
+				作用：匹配同时附带多个属性的元素
+				ex:
+					1、匹配页面中即有id属性又有class属性的div元素
+						div[id][class]{}
+			4、[attr=value]
+				作用：匹配 attr 属性值为 value 的元素
+				ex:
+					1、匹配页面中所有的文本框
+						input[type=text]{}
+						input[type="text"]{}
+						input[type='text']{}
+					2、[id="container"]
+						等同于 #container{}
+						
+						[class="important"]
+						等同于 .important
+	3、伪类选择器
+		已学过的伪类：
+			链接伪类：:link,:visited
+			动态伪类：:hover,:active,:focus
+		1、目标伪类
+			作用：突出显示活动的HTML锚点元素。匹配被激活的锚点
+			语法：selector:target{ ... }
+				div:target{ ... }
+				#content:target{ ... }
+		2、结构伪类
+			作用：通过元素的结构关系来匹配元素
+			1、:first-child
+				匹配的元素是属于其父元素中的第一个子元素
+				<div id="container">
+					<p>p1</p>
+					<p>p2</p>
+					<p>p3</p>
+					<p>p4</p>
+				</div>
+				ex:
+					p:first-child{ ... }
+			2、:last-child
+				匹配的元素是属于其父元素中的最后一个子元素
+				ex:
+					p:last-child{ ... }
+				练习：
+					1、创建一个 4*4 的表格，并填充内容
+					2、设置第一行的数据的背景颜色为 黄色
+					3、设置最后一行的数据的背景颜色为 红色
+			3、:nth-child(n)	
+				匹配的元素是属于其父元素中第n个子元素
+					table tr:nth-child(2)
+				练习：
+					将第2行中的第3列背景颜色改为orange
+			4、:empty
+				匹配没有子元素的元素
+				<div></div>
+			5、:only-child
+				匹配的元素是属于其父元素中的唯一子元素
+		3、否定伪类
+			将满足指定选择器的元素给排除出去
+			语法：:not(selector){}
+			table tr:not(:first-child){
+				font-size:48px;
+			}
+			除第一行以外所有行的文字大小为48px
+			练习：
+				设置每行中除第一列以外的所有列，文字以加粗 和 斜体的方式显示
+
+弹性布局
+	1什么是弹性布局
+	  弹性布局，是一种布局方式，注意是解决某元素中“子元素“的布局方式，为布局提供最大的灵活性
+	2、弹性布局的相关概念
+	  1、弹性布局的相关概念
+	  	简称为“容器”，子元素的父元素，称为“容器”
+	  2、弹性布局的 项目
+	  	简称为“项目”，要实现布局效果的元素称为“项目”
+	  3、主轴
+	  	 项目们排列放心的一根轴，就称之为主轴
+	  	 如果项目们按x轴排列（横向排列），那么x轴是主轴
+	  	 如果项目们按y轴排列（纵向排列），那么y轴就是主轴
+	  4、交叉轴
+	  	 与主轴交叉的一根轴就是交叉轴
+	  	 如果主轴是x轴，那么y轴是交叉轴
+	  	 如果主轴是y轴，那么x轴就是交叉轴
+	3、语法
+	  1、flex的容器
+	    将元素变为flex容器后，那么所有的子元素都将变为flex项目，都允许按照弹性布局的方式排序
+	    取值：
+	    1、flex：将块级元素变为容器
+	    2、inline-flex：将行内元素变成容器
+	    	float clear vertical-align将失效
+	  		3、元素设置为flex容器之后，子元素的尺寸允许被修改
+	  		4、容器的text-align属性将失效
+	 	2、容器属性
+	 			1、flex-direction
+	 			   作用：指定容器的主轴及其排列方向
+	 			   取值：
+	 			   	1、row
+	 			   	   默认值，即主轴为x轴，起点在左端
+	 			   	2、row-reverse
+	 			   	   主轴为x轴，起点在右端
+	 			   	3、column
+	 			   	   主轴为y轴，起点在顶端
+	 			   	4、column-reverse
+	 			   	   主轴为y轴，起点在低端
+					2、flex-wrap
+							作用：当一个主轴排列不下所有项目时，如何换行
+								取值
+								 1、nowrap
+								 默认值，即空间不够时，也不换行，项目会自动缩小
+								 2、wrap
+								 	换行
+								 3、wrap-reverse
+					3、flex-flow
+								 	作用：是flex-direction和flex-wrap缩写形式
+								 	取值：
+								 	1、row nowrap（默认值）
+								 	2、direction wrap
+					4、justify-content
+								 	作用：定义项目在主轴上的对齐方式
+								 	取值：
+								 	1、flex-start
+								 				在主轴的起点对齐
+								 	2、flex-end
+								 				在主轴的终点对齐
+								 	3、center
+								 				在主轴居中对齐
+					5、algin-items
+							作用：项目在交叉轴上的对齐方式
+							取值：
+								1、flex-start
+									交叉轴的起点对齐
+								2、flex-end
+									交叉轴的终点对齐
+								3、center
+									交叉轴的居中对齐
+								4、baseline
+									交叉轴上基线对齐
+								5、stretch
+									如果项目未设置尺寸，在交叉轴上将沾满所以的空间
+			3、项目的属性
+					    	该组属性只能设置在某一项目元素上，只控制一个项目，是不影响容器以及其他项目的效果
+					1、order
+					    	作用：定义项目的排列顺序，值越小，越靠近起点，默认值为0
+					    	取值：整数数字，无单位
+					2、flex-grow
+									作用：定义项目的放大比例。如果容器有足够的剩余空间，项目将如何放大
+									取值：
+									整数数字，无单位
+									默认为0，不放大
+									取值月底，占据的剩余空间越多
+					3、flex-shrink
+									作用：定义项目的缩小比例，即容器空间不足时，项目该如何缩小
+									取值：默认值为1，空间不足时，则等比缩小
+									取值为0，则不缩小
+					4、align-self
+									作用：定义当前项目在交叉轴的对齐方式
+									取值：
+									1、flex-start
+									2、flex-end
+									3、center
+									4、baseline
+									5、stretch
+									6、auto
+												继承自父元素的algin-items属性

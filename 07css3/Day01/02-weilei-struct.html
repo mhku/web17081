@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			table tr:first-child{
+				background-color:yellow;
+			}
+			table tr:last-child{
+				background-color:red;
+			}
+
+			/*将第2行的第3列背景颜色更改为orange*/
+			table tr:nth-child(2) td:nth-child(3){
+				background:orange;
+			}
+
+			/*将每行中除第一列以外的所有列的文本更改为加粗 和 斜体*/
+			table td:not(:first-child){
+				font-weight:bold;
+				font-style:italic;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+			</tr>
+			<tr>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+			</tr>
+			<tr>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+			</tr>
+			<tr>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+				<td>孙悟空</td>
+			</tr>
+		</table>
+	</body>
+</html>

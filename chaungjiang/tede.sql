@@ -1,0 +1,21 @@
+#数据库
+SET NAMES utf8;
+DROP DATABASE IF EXISTS tedu;
+CREATE DATABASE tedu CHARSET=UTF8;
+USE tedu;
+CREATE TABLE user(
+ uid INT  PRIMARY KEY,
+ uname VARCHAR(64),
+ upwd VARCHAR(32),
+ udata DATE,  #时间
+ price DECIMAL(8,2),
+ pic VARCHAR(64)
+);
+INSERT INTO user VALUES(1,'张三',12345,'2017-9-7'5500,'img/234567.jpg');
+INSERT INTO user VALUES(2,'张三',12345,'2017-9-7'6500,'img/234567.jpg');
+INSERT INTO user VALUES(3,'张三',12345,'2017-9-7'5500,'img/234567.jpg');
+INSERT INTO user VALUES(4,'张三',12345,'2017-9-7'5500,'img/234567.jpg');
+INSERT INTO user VALUES(5,'张三',12345,'2017-9-7'5500,'img/234567.jpg');
+SELECT * FROM user;
+SELECT * FROM user WHERE uname='张三 'AND price=6500;
+SELECT * FROM user LIMIT 0,5;

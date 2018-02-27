@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var TestComponent=React.createClass({
+        render:function(){
+            return <h1>爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你爱你</h1>
+        }
+    })
+    ReactDOM.render(
+        <TestComponent></TestComponent>,
+        document.getElementById("example")
+    )
+</script>
+</body>
+</html>

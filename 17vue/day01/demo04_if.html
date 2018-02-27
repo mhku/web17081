@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+
+    <!--
+        什么是指令？
+            指令就是告诉我们要去做件事情，有可能是写一个a，
+            告诉浏览器要去创建一个超链接
+            v-if
+
+    -->
+    <!--在用户未登录的情况下，显示一个按钮-->
+    <button v-if="!isUserLogin">
+        请去登录
+    </button>
+
+    <!--在用户登录的情况下，显示一个h2的标签-->
+    <h2 v-if="isUserLogin">欢迎张三</h2>
+</div>
+
+<script>
+
+    new Vue({
+      el:'#example',
+      data:{
+        isUserLogin:true
+      }
+    });
+
+</script>
+
+</body>
+</html>

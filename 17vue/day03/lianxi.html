@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="example">
+    <!--调用组件-->
+    <my-component></my-component>
+</div>
+
+<script>
+    //创建组件
+    Vue.component('my-component',{
+      template:`<h1 :style="{opacity:opacityValue}">
+                    hello lifecycle
+                </h1>`,
+      //组件中的模板内容 挂载到DOM
+      mounted:function () {
+        //启动一个定时器，来修改数据中的opacityValue
+        // 0 0.1 ~1 0~1
+        /*setInterval(function(){
+          this.opacityValue+=0.1;
+          if(this.opacityValue > 1){
+            this.opacityValue = 0;
+          }
+          console.log(this.opacityValue);
+        }.bind(this),500);*/
+        setInterval(()=>{
+          this.opacityValue+=0.1;
+          if(this.opacityValue > 1){
+            this.opacityValue = 0;
+          }
+          console.log(this.opacityValue);
+        },500);
+      },
+      data:function(){
+        return {
+          opacityValue:0
+        }
+      }
+    });
+
+    new Vue({
+      el:'#example'
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>退出登录 </h1>
+    <script>
+        sessionStorage.removeItem("uname");
+        alert("退出登录 3S 跳转首页");
+        setTimeout(function(){
+          location.href = "06_index.html";
+        },3000);
+    </script>
+</body>
+</html>
+
